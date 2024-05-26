@@ -87,18 +87,25 @@
             font-size: 1em;
         }
 
-        .success-message {
-            color: green;
-            display: none;
-            font-size: 1em;
-        }
-
         .success-container {
             display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             animation: fadeIn 1s forwards;
+            width: 80%; /* 调整宽度 */
+            padding: 20px; /* 调整内边距 */
+        }
+
+        .success-title {
+            font-size: 1.5em; /* 调整字体大小 */
+            margin-bottom: 15px; /* 调整底部外边距 */
+        }
+
+        .success-message {
+            color: green;
+            display: none;
+            font-size: 1em;
         }
 
         .gradient-button {
@@ -112,7 +119,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-position 0.5s, transform 0.3s;
-            margin-top: 20px;
+            margin-top: 10px; /* 调整顶部外边距 */
         }
 
         .gradient-button:hover {
@@ -124,9 +131,9 @@
         }
 
         .game-container {
-            margin-top: 20px;
-            width: 320px;
-            height: 220px;
+            margin-top: 15px; /* 调整顶部外边距 */
+            width: 280px; /* 调整宽度 */
+            height: 180px; /* 调整高度 */
             border: 1px solid #ccc;
             border-radius: 5px;
             overflow: hidden;
@@ -149,7 +156,7 @@
         <button class="gradient-button" onclick="goToURL1()">MC363</button>
         <button class="gradient-button" onclick="goToURL2()">紫南</button>
         <div class="game-container">
-            <iframe src="game.html" width="300" height="200" frameborder="0"></iframe>
+            <iframe src="game.html" width="320" height="240" frameborder="0"></iframe>
         </div>
     </div>
 
