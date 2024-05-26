@@ -4,33 +4,29 @@
 <meta charset="UTF-8">
 <title>简单移动游戏</title>
 <style>
-  body { margin: 0; overflow: hidden; }
+  body { margin: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; background: #ccc; }
   #gameCanvas { background: #eee; display: block; }
 </style>
 </head>
 <body>
-<canvas id="gameCanvas"></canvas>
+<canvas id="gameCanvas" width="300" height="200"></canvas>
 
 <script>
 // 获取canvas元素和绘图上下文
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-// 设置canvas大小
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-// 游戏角色和障碍物
+// 游戏角色
 const hero = {
   x: 50,
   y: 50,
   width: 50,
   height: 50,
-  color: '#F00',
-  speed: 5
+  color: '#008cba', // 主题颜色
+  speed: 2,
+  directionX: 1,
+  directionY: 1
 };
-
-const obstacles = [];
 
 // 游戏循环
 function gameLoop() {
@@ -41,50 +37,27 @@ function gameLoop() {
   ctx.fillStyle = hero.color;
   ctx.fillRect(hero.x, hero.y, hero.width, hero.height);
 
-  // 绘制障碍物
-  obstacles.forEach(obstacle => {
-    ctx.fillStyle = obstacle.color;
-    ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-  });
-
-  // 更新障碍物位置
-  obstacles.forEach(obstacle => {
-    obstacle.y += obstacle.speed;
-    // 如果障碍物移出屏幕，重新放置到顶部
-    if (obstacle.y > canvas.height) {
-      obstacle.y = -obstacle.height;
-    }
-  });
+  // 更新角色位置
+  moveHero();
 
   // 请求下一帧动画
   requestAnimationFrame(gameLoop);
 }
 
-// 监听键盘事件
-document.addEventListener('keydown', function(event) {
-  switch (event.key) {
-    case 'ArrowUp': hero.y -= hero.speed; break;
-    case 'ArrowDown': hero.y += hero.speed; break;
-    case 'ArrowLeft': hero.x -= hero.speed; break;
-    case 'ArrowRight': hero.x += hero.speed; break;
-  }
-});
+// 移动角色的函数
+function moveHero() {
+  hero.x += hero.speed * hero.directionX;
+  hero.y += hero.speed * hero.directionY;
 
-// 初始化障碍物
-function initObstacles() {
-  for (let i = 0; i < 5; i++) {
-    obstacles.push({
-      x: Math.random() * canvas.width,
-      y: -50,
-      width: 50,
-      height: 50,
-      color: '#00F',
-      speed: Math.random() * 3 + 2
-    });
+  // 如果角色碰到边界，改变方向
+  if (hero.x < 0 || hero.x + hero.width > canvas.width) {
+    hero.directionX *= -1;
+  }
+  if (hero.y < 0 || hero.y + hero.height > canvas.height) {
+    hero.directionY *= -1;
   }
 }
 
-initObstacles();
 gameLoop();
 </script>
 </body>
