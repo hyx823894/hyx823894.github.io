@@ -13,9 +13,28 @@
             align-items: center;
             height: 115vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #87CEEB;
             overflow: hidden;
+            position: relative;
         }
+
+        .watermark {
+            position: absolute;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.3);
+            transform: rotate(-45deg);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .watermark:nth-child(1) { top: 20px; left: 20px; }
+        .watermark:nth-child(2) { top: 50px; left: 150px; }
+        .watermark:nth-child(3) { top: 80px; left: 300px; }
+        .watermark:nth-child(4) { top: 150px; left: 100px; }
+        .watermark:nth-child(5) { top: 200px; left: 250px; }
+        .watermark:nth-child(6) { top: 250px; left: 20px; }
+        .watermark:nth-child(7) { top: 300px; left: 200px; }
+        .watermark:nth-child(8) { top: 350px; left: 350px; }
 
         .login-container, .success-container {
             background-color: #ffffff;
@@ -26,6 +45,7 @@
             transform: translateY(-50px);
             opacity: 0;
             animation: fadeIn 1s forwards, slideDown 1s forwards;
+            z-index: 2;
         }
 
         @keyframes fadeIn {
@@ -46,24 +66,8 @@
             color: #008cba;
         }
 
-        .login-input {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: border-color 0.3s;
-        }
-
-        .login-input:focus {
-            border-color: #008cba;
-        }
-
         .login-button {
-            width: 100%;
-            padding: 10px;
+            padding: 10px 20px;
             font-size: 1em;
             background-color: #008cba;
             color: white;
@@ -79,12 +83,6 @@
 
         .login-button:active {
             transform: scale(0.98);
-        }
-
-        .error-message {
-            color: red;
-            display: none;
-            font-size: 1em;
         }
 
         .success-container {
@@ -141,12 +139,17 @@
     </style>
 </head>
 <body>
+    <div class="watermark">heyuxuan</div>
+    <div class="watermark">www.xrayhttp.top</div>
+    <div class="watermark">heyuxuan</div>
+    <div class="watermark">www.xrayhttp.top</div>
+    <div class="watermark">heyuxuan</div>
+    <div class="watermark">www.xrayhttp.top</div>
+    <div class="watermark">heyuxuan</div>
+    <div class="watermark">www.xrayhttp.top</div>
+
     <div class="login-container">
-        <h1 class="login-title">登录</h1>
-        <input type="text" id="username" class="login-input" placeholder="用户名">
-        <input type="password" id="password" class="login-input" placeholder="密码">
-        <button class="login-button" onclick="validateLogin()">登录</button>
-        <p class="error-message" id="error-message">用户名或密码错误</p>
+        <button class="login-button" onclick="showSuccess()">点击显示登录成功页面</button>
     </div>
 
     <div class="success-container" id="success-container">
@@ -161,23 +164,11 @@
     </div>
 
     <script>
-        function validateLogin() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('error-message');
+        function showSuccess() {
             const loginContainer = document.querySelector('.login-container');
             const successContainer = document.getElementById('success-container');
-            // 替换为您的验证逻辑
-            const validUsername = 'admin';
-            const validPassword = '123456';
-
-            if (username === validUsername && password === validPassword) {
-                errorMessage.style.display = 'none';
-                loginContainer.style.display = 'none';
-                successContainer.style.display = 'flex';
-            } else {
-                errorMessage.style.display = 'block';
-            }
+            loginContainer.style.display = 'none';
+            successContainer.style.display = 'flex';
         }
 
         function goToURL() {
