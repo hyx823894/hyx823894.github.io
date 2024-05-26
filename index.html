@@ -135,6 +135,14 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-iframe {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -159,7 +167,7 @@
         <button class="gradient-button" onclick="goToURL1()">MC363</button>
         <button class="gradient-button" onclick="goToURL2()">紫南</button>
         <div class="game-container">
-            <iframe src="game.html" width="320" height="240" frameborder="0"></iframe>
+            <iframe src="game.html" class="game-iframe" frameborder="0"></iframe>
         </div>
     </div>
 
