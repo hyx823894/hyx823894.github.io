@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP记录</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .login-container, .success-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: fadeIn 1s forwards, slideDown 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .login-title, .success-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #008cba;
+        }
+
+        .login-input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .login-input:focus {
+            border-color: #008cba;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #005f5f;
+        }
+
+        .login-button:active {
+            transform: scale(0.98);
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+            font-size: 1em;
+        }
+
+        .success-message {
+            color: green;
+            display: none;
+            font-size: 1em;
+        }
+
+        .success-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s forwards;
+        }
+
+        .gradient-button {
+            background: linear-gradient(90deg, #008cba, #00bfa5, #008cba);
+            background-size: 300% 300%;
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-position 0.5s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .gradient-button:hover {
+            background-position: right center;
+        }
+
+        .gradient-button:active {
+            transform: scale(0.98);
+        }
+
+        .game-container {
+            margin-top: 20px;
+            width: 320px;
+            height: 240px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">登录</h1>
+        <input type="text" id="username" class="login-input" placeholder="用户名">
+        <input type="password" id="password" class="login-input" placeholder="密码">
+        <button class="login-button" onclick="validateLogin()">登录</button>
+        <p class="error-message" id="error-message">用户名或密码错误</p>
+    </div>
+
+    <div class="success-container" id="success-container">
+        <h1 class="success-title"><p>222.189.239.32</br>administrator</br><p>RDP:40255<br>MCSM:40256<br>宝塔:40258</h1>
+        <p class="success-message">您已成功登录。</p>
+        <button class="gradient-button" onclick="goToURL()">融珂之悦云</button>
+        <div class="game-container">
+            <iframe src="game.html" width="320" height="240" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const loginContainer = document.querySelector('.login-container');
+            const successContainer = document.getElementById('success-container');
+            // 替换为您的验证逻辑
+            const validUsername = 'admin';
+            const validPassword = '823894';
+
+            if (username === validUsername && password === validPassword) {
+                errorMessage.style.display = 'none';
+                loginContainer.style.display = 'none';
+                successContainer.style.display = 'flex';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function goToURL() {
+            window.open('https://cloud.yghpy.com/login', '_blank'); // 替换为您的目标URL
+        }
+    </script>
+</body>
+</html>
