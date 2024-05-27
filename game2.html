@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暫時無法訪問此網頁</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #dino {
+            width: 100px;
+            height: 100px;
+            background-image: url('dino.png'); /* 将图像替换为您喜欢的小恐龙图像 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: run 0.8s steps(8) infinite;
+        }
+
+        @keyframes run {
+            from { background-position: 0 0; }
+            to { background-position: -800px 0; }
+        }
+
+        #message {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="dino"></div>
+    <p id="message">哎呀，网络好像出问题了！</p>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode === 32) { // 按下空格键
+                jump();
+            }
+        });
+
+        function jump() {
+            var dino = document.getElementById('dino');
+            if (!dino.classList.contains('jump')) {
+                dino.classList.add('jump');
+                setTimeout(function() {
+                    dino.classList.remove('jump');
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
