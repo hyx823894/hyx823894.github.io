@@ -163,6 +163,11 @@
                 padding: 10px;
                 font-size: 1em;
             }
+            .info-message {
+            font-size: 1.2em;
+            color: #008cba;
+            margin-top: 20px;
+            }
         }
     </style>
 </head>
@@ -188,15 +193,21 @@
         <button class="gradient-button" onclick="goToURL3()">MCSM面板</button>
         <button class="gradient-button" onclick="goToURL4()">宝塔面板</button>
         <button class="gradient-button" onclick="goToURL5()">测试网站</button>
-        <a href="/index.html" download>
-        <button class="gradient-button">   下载Html   </button>
-        </a>
+        <button class="gradient-button" onclick="showInfo()">下载本网站源码</button>
+    <p class="info-message" id="infoMessage" style="display: none;">乐，你还真信啊</p>
+        /*<a href="/index.html" download>*/
+        /*<button class="gradient-button">   下载Html   </button>*/
+        /*</a>*/
         <div class="animation-container">
             <div class="moving-block"></div>
         </div>
     </div>
 
     <script>
+        function showInfo() {
+            var infoMessage = document.getElementById('infoMessage');
+            infoMessage.style.display = 'block';
+        }
         function showSuccess() {
             const loginContainer = document.querySelector('.login-container');
             const successContainer = document.getElementById('success-container');
