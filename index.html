@@ -91,7 +91,7 @@
             align-items: center;
             justify-content: center;
             animation: fadeIn 1s forwards;
-            width: 80%; /* 调整宽度 */
+            width: 90%; /* 调整宽度 */
             padding: 20px; /* 调整内边距 */
         }
 
@@ -128,21 +128,43 @@
             transform: scale(0.98);
         }
 
-        .game-container {
-            margin-top: 15px; /* 调整顶部外边距 */
-            width: 280px; /* 调整宽度 */
-            height: 180px; /* 调整高度 */
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .animation-container {
+            width: 100%;
+            height: 50px;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative;
+            background-color: #87CEEB;
+            margin-top: 20px;
         }
 
-        .game-iframe {
-            width: 100%;
-            height: 100%;
+        .moving-block {
+            width: 50px;
+            height: 50px;
+            background-color: #008cba;
+            position: absolute;
+            animation: moveBlock 2s linear infinite;
+        }
+
+        @keyframes moveBlock {
+            0% { left: 0; }
+            50% { left: calc(100% - 50px); }
+            100% { left: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .login-container, .success-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .login-title, .success-title {
+                font-size: 1.5em;
+            }
+
+            .login-button, .gradient-button {
+                padding: 10px;
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -157,7 +179,7 @@
     <div class="watermark">www.xrayhttp.top</div>
 
     <div class="login-container">
-        <button class="login-button" onclick="showSuccess()">点击加载(～￣▽￣)～</button>
+        <button class="login-button" onclick="showSuccess()">加载按钮(～￣▽￣)～</button>
     </div>
 
     <div class="success-container" id="success-container">
@@ -165,9 +187,9 @@
         <p class="success-message">您已成功登录。</p>
         <button class="gradient-button" onclick="goToURL()">融珂之悦云</button>
         <button class="gradient-button" onclick="goToURL1()">StarEra官网</button>
-        <button class="gradient-button" onclick="goToURL2()">紫南</button>
-        <div class="game-container">
-            <iframe src="game.html" class="game-iframe" frameborder="0"></iframe>
+        <button class="gradient-button" onclick="goToURL2()">紫南主页</button>
+        <div class="animation-container">
+            <div class="moving-block"></div>
         </div>
     </div>
 
@@ -180,13 +202,13 @@
         }
 
         function goToURL() {
-            window.open('https://cloud.yghpy.com/login', '_blank'); // 替换为您的目标URL
+            window.open('https://cloud.yghpy.com/login', '_blank');
         }
         function goToURL1() {
-            window.open('https://www.mc363.top', '_blank'); // 替换为您的目标URL
+            window.open('https://www.mc363.top', '_blank');
         }
         function goToURL2() {
-            window.open('https://www.520mc.top', '_blank'); // 替换为您的目标URL
+            window.open('https://www.520mc.top', '_blank');
         }
     </script>
 </body>
