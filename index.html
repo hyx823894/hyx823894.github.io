@@ -140,7 +140,7 @@
             height: 50px;
             background-color: #008cba;
             position: absolute;
-            animation: moveBlock 2s linear infinite;
+            animation: moveBlock 3s linear infinite;
         }
 
         @keyframes moveBlock {
@@ -177,15 +177,18 @@
     <div class="watermark">www.xrayhttp.top</div>
 
     <div class="login-container">
-        <button class="login-button" onclick="showSuccess()">加载按钮(～￣▽￣)～</button>
+        <button class="login-button" onclick="showSuccess()">点击加载</button>
     </div>
 
     <div class="success-container" id="success-container">
-        <h1 class="success-title">222.189.239.32</br>administrator</br>RDP:40255<br>MCSM:40256<br>宝塔:40258</h1>
+        <h1 class="success-title">222.189.239.32</br>administrator</br>RDP:40255</h1>
         <p class="success-message">您已成功登录。</p>
         <button class="gradient-button" onclick="goToURL()">融珂之悦云</button>
         <button class="gradient-button" onclick="goToURL1()">StarEra官网</button>
-        <button class="gradient-button" onclick="goToURL2()">紫南</button>
+        <button class="gradient-button" onclick="goToURL2()">紫南主页</button>
+        <button class="gradient-button" onclick="goToURL3()">MCSM面板</button>
+        <button class="gradient-button" onclick="goToURL4()">宝塔面板</button>
+        <button class="gradient-button" onclick="goToURL5()">测试网站</button>
         <div class="animation-container">
             <div class="moving-block"></div>
         </div>
@@ -207,6 +210,15 @@
         }
         function goToURL2() {
             window.open('https://www.520mc.top', '_blank');
+        }
+        function goToURL3() {
+            window.open('http://222.187.239.32:40256', '_blank');
+        }
+        function goToURL4() {
+            window.open('http://222.187.239.32:40258/he', '_blank');
+        }
+        function goToURL5() {
+            window.open('http://222.187.239.32:40253', '_blank');
         }
     </script>
 </body>
