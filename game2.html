@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -16,8 +17,8 @@
         }
 
         #dino {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             background-image: url('dino.png'); /* 将图像替换为您喜欢的小恐龙图像 */
             background-size: contain;
             background-repeat: no-repeat;
@@ -26,27 +27,42 @@
 
         @keyframes run {
             from { background-position: 0 0; }
-            to { background-position: -800px 0; }
+            to { background-position: -640px 0; }
         }
 
         #message {
             text-align: center;
-            font-size: 24px;
+            font-size: 18px;
             color: #333;
+            margin-bottom: 20px;
+        }
+
+        #controlButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #controlButton:hover {
+            background-color: #005f5f;
+        }
+
+        #controlButton:active {
+            transform: scale(0.98);
         }
     </style>
 </head>
 <body>
     <div id="dino"></div>
     <p id="message">哎呀，网络好像出问题了！</p>
+    <button id="controlButton" onclick="jump()">跳跃</button>
 
     <script>
-        document.addEventListener('keydown', function(event) {
-            if (event.keyCode === 32) { // 按下空格键
-                jump();
-            }
-        });
-
         function jump() {
             var dino = document.getElementById('dino');
             if (!dino.classList.contains('jump')) {
