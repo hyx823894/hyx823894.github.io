@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网络恐龙游戏</title>
+    <title>暫時無法訪問此網頁</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,18 +14,30 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
         }
 
         #dino {
-            width: 30px;
-            height: 50px;
-            background-color: #333;
-            animation: run 0.8s steps(8) infinite;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://img.icons8.com/ios-filled/50/000000/dinosaur.png'); /* 将图像替换为您喜欢的小恐龙图像 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: 0;
+            left: 50px; /* 初始位置 */
+            transition: bottom 0.2s;
         }
 
-        @keyframes run {
-            from { background-position: 0 0; }
-            to { background-position: -240px 0; }
+        .obstacle {
+            width: 20px;
+            height: 40px;
+            background-color: #333;
+            position: absolute;
+            bottom: 0;
+            right: -20px; /* 初始位置 */
+            transition: right 2s linear;
         }
 
         #message {
@@ -44,6 +56,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
+            z-index: 1;
         }
 
         #controlButton:hover {
@@ -57,12 +70,31 @@
 </head>
 <body>
     <div id="dino"></div>
-    <p id="message">哎呀，网络好像出问题了！</p>
     <button id="controlButton" onclick="jump()">跳跃</button>
 
     <script>
+        var dino = document.getElementById('dino');
+        var controlButton = document.getElementById('controlButton');
+        var obstacles = [];
+        var gameInterval;
+
+        function startGame() {
+            gameInterval = setInterval(moveObstacles, 2000);
+        }
+
+        function moveObstacles() {
+            var obstacle = document.createElement('div');
+            obstacle.classList.add('obstacle');
+            obstacle.style.bottom = '0px';
+            obstacle.style.right = '-20px';
+            document.body.appendChild(obstacle);
+            obstacles.push(obstacle);
+            setTimeout(function() {
+                obstacle.style.right = '100%';
+            }, 100);
+        }
+
         function jump() {
-            var dino = document.getElementById('dino');
             if (!dino.classList.contains('jump')) {
                 dino.classList.add('jump');
                 setTimeout(function() {
@@ -70,6 +102,27 @@
                 }, 500);
             }
         }
+
+        function checkCollision() {
+            var dinoRect = dino.getBoundingClientRect();
+            obstacles.forEach(function(obstacle) {
+                var obstacleRect = obstacle.getBoundingClientRect();
+                if (dinoRect.bottom > obstacleRect.top &&
+                    dinoRect.right > obstacleRect.left &&
+                    dinoRect.left < obstacleRect.right) {
+                    endGame();
+                }
+            });
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            alert('游戏结束！');
+            location.reload();
+        }
+
+        startGame();
+        setInterval(checkCollision, 10);
     </script>
 </body>
 </html>
