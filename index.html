@@ -30,7 +30,7 @@
         }
 
         .bg-secondary {
-            background-color: #769bc93e;
+            background-color: rgba(118, 155, 201, 0.24);
         }
 
         .text-highlight {
@@ -54,18 +54,21 @@
         <section class="bg-secondary p-6 mb-8 rounded-corners shadow-lg">
             <h2 class="text-3xl font-bold mb-4 text-highlight">欢迎来到 StarEra 服务器！</h2>
             <p>这里是一个充满冒险与挑战的地方，在这里你将体验到多种有趣的玩法和活动。立即加入我们，一起探索这片奇幻的世界吧！</p>
-            <img src="lobby.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
-            <img src="command.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
-            <img src="slobby.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
-            <img src="sp.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
-            <img src="playerhome.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
-            <img src="xq.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
-            <img src="363.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img src="lobby.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+                <img src="command.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+                <img src="slobby.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+                <img src="sp.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+                <img src="playerhome.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+                <img src="xq.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+                <img src="363.png" alt="服务器宣传图片" class="mt-4 rounded-corners w-full">
+            </div>
         </section>
 
         <section class="bg-secondary p-6 mb-8 rounded-corners shadow-lg">
             <h2 class="text-3xl font-bold mb-4 text-highlight">服务器介绍</h2>
-            <p>StarEra 是一个精心打造的《我的世界》JAVA版服务器，拥有多个特色玩法和丰富的内容。无论你是喜欢竞技对战，还是喜欢自由建造，这里都能满足你的需求。</br></br>版本:JAVA 1.20.4 <strong>无需模组 离线可进 IP：mc363.top</strong></p>
+            <p>StarEra 是一个精心打造的《我的世界》JAVA版服务器，拥有多个特色玩法和丰富的内容。无论你是喜欢竞技对战，还是喜欢自由建造，这里都能满足你的需求。</p>
+            <p>版本: JAVA 1.20.4 <strong>无需模组 离线可进 IP：mc363.top</strong></p>
         </section>
 
         <section class="bg-secondary p-6 mb-8 rounded-corners shadow-lg">
@@ -99,14 +102,77 @@
         <section class="bg-secondary p-6 mb-8 rounded-corners shadow-lg">
             <h2 class="text-3xl font-bold mb-4 text-highlight">联系我们</h2>
             <p>有任何问题或建议？请随时联系我们的客服团队，我们会尽快为您解答和提供帮助。</p>
-            <p>QQ群: <a href="https://jq.qq.com/?_wv=1027&k=863225852" class="text-blue-400">863225852</a><a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=FK72ZksyuvJorC0Y4QphT8LybDIMcrVI&jump_from=webapi&authKey=cZZqIGobRp1WWfC72i1P1VjhdzyND/qJktgxidbxQE7rLiJskii+SDl4VydMRMoW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="StarEra | 玩家交流群" title="StarEra | 玩家交流群"></a></p>
+            <p>QQ群: <a href="https://jq.qq.com/?_wv=1027&k=863225852" class="text-blue-400">863225852</a> <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=FK72ZksyuvJorC0Y4QphT8LybDIMcrVI&jump_from=webapi&authKey=cZZqIGobRp1WWfC72i1P1VjhdzyND/qJktgxidbxQE7rLiJskii+SDl4VydMRMoW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="StarEra | 玩家交流群" title="StarEra | 玩家交流群"></a></p>
             <p>邮箱: <a href="mailto:3542395682@qq.com" class="text-blue-400">3542395682@qq.com</a></p>
+        </section>
+
+        <!-- 特权充值模块 -->
+        <section id="pricing" class="section-padding bg-gray bg-secondary p-6 mb-8 rounded-corners shadow-lg">
+            <div class="container mx-auto">
+                <div class="section-header text-center">
+                    <h2 class="text-3xl font-bold mb-4 text-highlight">StarEra客户端下载</h2>
+                    <p>StarEra客户端所有版本下载<br>旧版本已不收支持</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="table fade-in">
+                        <div class="title">
+                            <h3 class="text-2xl font-bold mb-2 text-highlight">手机端</h3>
+                        </div>
+                        <div class="pricing-header">
+                            <p class="text-lg mb-2">用于安卓8以上的版本<span class="block text-secondary">需要789MB的储存空间</span></p>
+                        </div>
+                        <ul class="list-disc list-inside text-secondary mb-4">
+                            <li>此版本自带mini版</li>
+                            <li>mini版不可装载mod</li>
+                            <li>但是还自带一个普通版</li>
+                            <li>普通版可以装mod</li>
+                            <li>密码: 1145</li>
+                        </ul>
+                        <a href="https://www.lanzoui.com/icKFb23l91yb" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">下载</a>
+                    </div>
+                    <div class="table fade-in">
+                        <div class="title">
+                            <h3 class="text-2xl font-bold mb-2 text-highlight">电脑版(zip)</h3>
+                        </div>
+                        <div class="pricing-header">
+                            <p class="text-lg mb-2">需要win7(包括win7)以上的操作系统<span class="block text-secondary">需要520MB的储存空间</span></p>
+                        </div>
+                        <ul class="list-disc list-inside text-secondary mb-4">
+                            <li>电脑版只有一个版本</li>
+                            <li>这个版本可以装mod</li>
+                            <li>密码: 1145</li>
+                        </ul>
+                        <a href="https://wwz.lanzn.com/ikx8U23kzq9g" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">下载</a>
+                    </div>
+                    <div class="table fade-in">
+                        <div class="title">
+                            <h3 class="text-2xl font-bold mb-2 text-highlight">电脑版(自解压)</h3>
+                        </div>
+                        <div class="pricing-header">
+                            <p class="text-lg mb-2"><span class="block text-secondary"></span></p>
+                        </div>
+                        <ul class="list-disc list-inside text-secondary mb-4">
+                            <li>和电脑版(zip)是一样的内容但是自解压格式的</li>
+                        </ul>
+                        <a href="https://wwz.lanzn.com/iRLop23kz62j" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">下载</a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer class="bg-secondary p-4 text-center rounded-corners fade-in">
         <p class="text-secondary">&copy; 2024 StarEra 服务器. 版权所有.</p>
     </footer>
+
+    <!-- 到达顶部按钮 -->
+    <a href="#" class="back-to-top fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <i class="lni-arrow-up"></i>
+    </a>
+
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
 </body>
 
 </html>
