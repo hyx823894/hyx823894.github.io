@@ -60,7 +60,7 @@
             width: 100%;
             max-width: 600px;
             margin: auto;
-            background-color: #ffffff;
+            background-color: rgba(118, 155, 201, 0.24);
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -100,10 +100,12 @@
     <!-- Main content -->
     <main class="container mx-auto mt-8 fade-in">
         <section class="bg-secondary p-6 mb-8 rounded-corners shadow-lg">
-            <h2 class="text-3xl font-bold mb-4 text-highlight">服务器状态</h2>
+            <h2 class="text-3xl font-bold mb-4 text-highlight">服务器信息</h2>
             <div class="status-container">
                 <h3 class="text-highlight">服务器状态：</h3>
                 <p id="server-status" class="text-secondary">加载中...</p>
+                <h3 class="text-highlight">在线人数：</h3>
+                <p id="online-players" class="text-secondary">加载中...</p>
                 <h3 class="text-highlight">服务器信息：</h3>
                 <p id="server-info" class="text-secondary">加载中...</p>
                 <h3 class="text-highlight">服务器QQ群：</h3>
@@ -138,6 +140,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const statusElement = document.getElementById('server-status');
+                    const playersElement = document.getElementById('online-players');
                     const infoElement = document.getElementById('server-info');
                     const qqElement = document.getElementById('server-qq');
                     const ipElement = document.getElementById('server-ip');
@@ -145,12 +148,19 @@
 
                     if (data.online) {
                         statusElement.textContent = '在线';
+                        playersElement.textContent = `当前在线人数: ${data.players.now}`;
                         infoElement.textContent = `MOTD: ${removeColorCodes(data.motd)}`;
-                        qqElement.textContent = removeColorCodes(data.players.sample[0].name);
-                        ipElement.textContent = removeColorCodes(data.players.sample[1].name);
-                        developersElement.textContent = removeColorCodes(data.players.sample[2].name);
+
+                        const qqText = data.players.sample[0].name;
+                        const ipText = data.players.sample[1].name;
+                        const developersText = data.players.sample[2].name;
+
+                        qqElement.textContent = removeColorCodes(qqText.split('：')[1]);
+                        ipElement.textContent = removeColorCodes(ipText.split('：')[1]);
+                        developersElement.textContent = removeColorCodes(developersText.split('：')[1]);
                     } else {
                         statusElement.textContent = '离线';
+                        playersElement.textContent = '无法获取在线人数';
                         infoElement.textContent = '无法获取服务器信息';
                         qqElement.textContent = '无法获取服务器信息';
                         ipElement.textContent = '无法获取服务器信息';
@@ -159,6 +169,7 @@
                 })
                 .catch(error => {
                     document.getElementById('server-status').textContent = '获取服务器状态失败';
+                    document.getElementById('online-players').textContent = '无法获取在线人数';
                     document.getElementById('server-info').textContent = '无法获取服务器信息';
                     document.getElementById('server-qq').textContent = '无法获取服务器信息';
                     document.getElementById('server-ip').textContent = '无法获取服务器信息';
