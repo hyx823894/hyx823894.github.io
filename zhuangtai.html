@@ -102,12 +102,16 @@
         <section class="bg-secondary p-6 mb-8 rounded-corners shadow-lg">
             <h2 class="text-3xl font-bold mb-4 text-highlight">服务器状态</h2>
             <div class="status-container">
-                <h3>服务器状态：</h3>
-                <p id="server-status">加载中...</p>
-                <h3>服务器信息：</h3>
-                <p id="server-info">加载中...</p>
-                <h3>玩家列表：</h3>
-                <ul id="player-list">加载中...</ul>
+                <h3 class="text-highlight">服务器状态：</h3>
+                <p id="server-status" class="text-secondary">加载中...</p>
+                <h3 class="text-highlight">服务器信息：</h3>
+                <p id="server-info" class="text-secondary">加载中...</p>
+                <h3 class="text-highlight">服务器QQ群：</h3>
+                <p id="server-qq" class="text-secondary">加载中...</p>
+                <h3 class="text-highlight">服务器IP：</h3>
+                <p id="server-ip" class="text-secondary">加载中...</p>
+                <h3 class="text-highlight">服务器开发：</h3>
+                <p id="server-developers" class="text-secondary">加载中...</p>
             </div>
         </section>
     </main>
@@ -135,22 +139,30 @@
                 .then(data => {
                     const statusElement = document.getElementById('server-status');
                     const infoElement = document.getElementById('server-info');
-                    const playerListElement = document.getElementById('player-list');
+                    const qqElement = document.getElementById('server-qq');
+                    const ipElement = document.getElementById('server-ip');
+                    const developersElement = document.getElementById('server-developers');
 
                     if (data.online) {
                         statusElement.textContent = '在线';
                         infoElement.textContent = `MOTD: ${removeColorCodes(data.motd)}`;
-                        playerListElement.innerHTML = data.players.sample.map(player => `<li>${removeColorCodes(player.name)}</li>`).join('');
+                        qqElement.textContent = removeColorCodes(data.players.sample[0].name);
+                        ipElement.textContent = removeColorCodes(data.players.sample[1].name);
+                        developersElement.textContent = removeColorCodes(data.players.sample[2].name);
                     } else {
                         statusElement.textContent = '离线';
                         infoElement.textContent = '无法获取服务器信息';
-                        playerListElement.innerHTML = '';
+                        qqElement.textContent = '无法获取服务器信息';
+                        ipElement.textContent = '无法获取服务器信息';
+                        developersElement.textContent = '无法获取服务器信息';
                     }
                 })
                 .catch(error => {
                     document.getElementById('server-status').textContent = '获取服务器状态失败';
                     document.getElementById('server-info').textContent = '无法获取服务器信息';
-                    document.getElementById('player-list').innerHTML = '';
+                    document.getElementById('server-qq').textContent = '无法获取服务器信息';
+                    document.getElementById('server-ip').textContent = '无法获取服务器信息';
+                    document.getElementById('server-developers').textContent = '无法获取服务器信息';
                     console.error('Error fetching server status:', error);
                 });
         });
