@@ -13,98 +13,197 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
             color: #333;
+            line-height: 1.6;
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         header nav ul {
-            list-style-type: none;
+            list-style: none;
         }
 
         header nav ul li {
-            display: inline;
+            display: inline-block;
             margin: 0 15px;
+            transition: transform 0.3s ease;
+        }
+
+        header nav ul li:hover {
+            transform: scale(1.1);
         }
 
         header nav ul li a {
-            color: white;
+            color: #ecf0f1;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #3498db;
         }
 
         .hero {
-            background: url('hero-image.jpg') no-repeat center center/cover;
-            height: 400px;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('hero-image.jpg') no-repeat center center/cover;
+            height: 60vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
             text-align: center;
-            position: relative;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeIn 1.5s forwards;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* 添加一个半透明的黑色遮罩 */
-            z-index: 1;
-        }
-
-        .hero h1, .hero p {
-            z-index: 2; /* 确保文字在遮罩上方 */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 3rem;
-            color: white; /* 将标题颜色改为白色 */
+            font-size: 3.5rem;
+            margin-bottom: 15px;
         }
 
         .hero p {
             font-size: 1.5rem;
-            color: lightgray; /* 将副标题颜色改为浅灰色 */
+            color: #dcdcdc;
         }
 
         section {
-            padding: 20px;
+            padding: 60px 20px;
             text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1.5s forwards;
         }
 
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            margin-top: 20px;
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         #contact {
-            padding: 20px;
-            text-align: center;
-            background-color: #fff;
-            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 40px auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #contact:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
         #contact h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
         }
 
         #contact p {
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        #contact ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #contact ul li {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            transition: transform 0.3s ease;
+        }
+
+        #contact ul li:hover {
+            transform: translateX(10px);
+        }
+
+        #contact ul li a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        #contact ul li a:hover {
+            color: #3498db;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* 手机适配 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            header nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            #contact {
+                padding: 20px;
+            }
+
+            section {
+                padding: 30px 10px;
+            }
         }
     </style>
 </head>
@@ -119,21 +218,42 @@
     </header>
 
     <section id="home" class="hero">
-        <h1>欢迎来到Hyx的世界</h1>
-        <p>开发者、创作者、Minecraft插件爱好者</p>
+        <div>
+            <h1>欢迎来到Hyx的世界</h1>
+            <p>开发者、创作者、Minecraft插件爱好者</p>
+        </div>
     </section>
 
     <section id="contact">
         <h2>联系我</h2>
-        <p>如果你对我感兴趣或想要与我合作，可以通过以下方式联系我：</p>
+        <p>如果你对我的项目感兴趣或想要与我合作，可以通过以下方式联系我：</p>
         <ul>
-            <li>QQ: 3542395682</li>
-            <li>Email: qw823894@outlook.com</li>
+            <li>QQ: <a href="tencent://message/?uin=3542395682">3542395682</a></li>
+            <li>Email: <a href="mailto:qw823894@outlook.com">qw823894@outlook.com</a></li>
         </ul>
+        <button onclick="sendEmail()">发送邮件</button>
     </section>
 
     <footer>
         <p>&copy; 2024 Hyx的个人网站. 保留所有权利.</p>
     </footer>
+
+    <script>
+        // 模拟发送邮件的交互
+        function sendEmail() {
+            alert('邮件发送功能暂未实现！');
+        }
+
+        // 滚动动画：当用户滚动到元素时触发动画
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    section.style.animationPlayState = 'running';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
