@@ -28,6 +28,10 @@
             animation: fadeInHeader 1.5s ease-in-out;
         }
 
+        body.loaded h1 span, body.loaded p span {
+            animation: letterAnimation 0.5s ease forwards;
+        }
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
@@ -110,12 +114,14 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            height: 300px;
+            overflow: hidden;
         }
 
         .message {
             padding: 10px 15px;
             border-radius: 15px;
-            max-width: 60%;
+            max-width: 80%;
             font-size: 1.2rem;
         }
 
@@ -158,48 +164,152 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes fadeOutMessages {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes scrollOutMessages {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-100%); }
+        }
+
+        @keyframes letterAnimation {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRow {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body>
+<body onload="document.body.classList.add('loaded');">
     <header>
         <img src="https://q1.qlogo.cn/g?b=qq&nk=3542395682&s=640" alt="个人头像" class="profile-picture">
         <div>
-            <h1>hyx (XRayL)</h1>
-            <p>开发者、创作者、Minecraft插件爱好者</p>
+            <h1>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 2.5s;">h</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 2.6s;">y</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 2.7s;">x</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 2.8s;"> </span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 2.9s;">(</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3s;">X</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.1s;">R</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.2s;">a</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.3s;">y</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.4s;">L</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.5s;">)</span>
+            </h1>
+            <p>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.6s;">开</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.7s;">发</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.8s;">者</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 3.9s;">、</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4s;">创</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.1s;">作</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.2s;">者</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.3s;">、</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.4s;">M</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.5s;">i</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.6s;">n</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.7s;">e</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.8s;">c</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 4.9s;">r</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5s;">a</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5.1s;">f</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5.2s;">t</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5.3s;">插</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5.4s;">件</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5.5s;">爱</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5.6s;">好</span>
+                <span style="display: inline-block; animation: letterAnimation 0.5s ease forwards; animation-delay: 5.7s;">者</span>
+            </p>
         </div>
     </header>
 
     <div class="content-container">
         <div class="social-media">
             <table>
-                <tr>
+                <tr style="opacity: 0; animation: fadeInRow 1s ease forwards; animation-delay: 0.5s;">
                     <td><a href="https://github.com/hyx823894" target="_blank" rel="noopener noreferrer">GitHub:</a></td>
                     <td><a href="https://github.com/hyx823894" target="_blank" rel="noopener noreferrer">链接</a></td>
                 </tr>
-                <tr>
+                <tr style="opacity: 0; animation: fadeInRow 1s ease forwards; animation-delay: 1s;">
                     <td><a href="https://v.douyin.com/iBhnrREk/" target="_blank" rel="noopener noreferrer">抖音:</a></td>
                     <td><a href="https://v.douyin.com/iBhnrREk/" target="_blank" rel="noopener noreferrer">链接</a></td>
                 </tr>
-                <tr>
+                <tr style="opacity: 0; animation: fadeInRow 1s ease forwards; animation-delay: 1.5s;">
                     <td><a href="https://space.bilibili.com/1399477490" target="_blank" rel="noopener noreferrer">哔哩哔哩:</a></td>
                     <td><a href="https://space.bilibili.com/1399477490" target="_blank" rel="noopener noreferrer">链接</a></td>
                 </tr>
-                <tr>
+                <tr style="opacity: 0; animation: fadeInRow 1s ease forwards; animation-delay: 2s;">
                     <td><a href="tencent://message/?uin=3542395682" target="_blank" rel="noopener noreferrer">QQ:</a></td>
                     <td>3542395682</td>
                 </tr>
-                <tr>
+                <tr style="opacity: 0; animation: fadeInRow 1s ease forwards; animation-delay: 2.5s;">
                     <td>邮箱:</td>
                     <td>qw823894@outlook.com</td>
                 </tr>
             </table>
         </div>
-        <div class="chat-box">
-            <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 1s;">😱😱😱</div>
-            <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 3s;">😰😰😰</div>
-            <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 5s;">😎😎😎</div>
-            <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 7s;">🤣🤣🤣</div>
-        </div>
+        <div class="chat-box" id="chatBox"></div>
+        <script>
+            const chatBox = document.getElementById('chatBox');
+            let repeatDelay = 17 * 1000;
+
+            function log(message) {
+                console.log(message);
+            }
+
+            function startFirstConversation() {
+                log('Starting first conversation');
+                chatBox.innerHTML = `
+                    <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 1s;">😱😱😱</div>
+                    <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 3s;">😰😰😰</div>
+                    <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 5s;">😎😎😎</div>
+                    <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 7s;">🤣🤣🤣</div>`;
+                setTimeout(() => {
+                    log('First conversation ended, starting fade-out animation');
+                    chatBox.style.animation = 'scrollOutMessages 1s ease forwards';
+                    setTimeout(() => {
+                        log('Clearing chat after fade-out');
+                        chatBox.innerHTML = '';
+                        chatBox.style.animation = '';
+                        setTimeout(() => {
+                            log('Starting second conversation');
+                            startSecondConversation();
+                        }, 10);
+                    }, 1000);
+                }, repeatDelay);
+            }
+
+            function startSecondConversation() {
+                log('Starting second conversation');
+                chatBox.innerHTML = `
+                    <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 1s;">在吗</div>
+                    <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 3s;">1</div>
+                    <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 5s; max-width: 80%;">你看看，<a href='https://space.bilibili.com/1399477490/video' target='_blank'>https://space.bilibili.com/1399477490/video</a></div>
+                    <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 7s;">😱😱😱</div>`;
+                setTimeout(() => {
+                    log('Second conversation ended, starting fade-out animation');
+                    chatBox.style.animation = 'scrollOutMessages 1s ease forwards';
+                    setTimeout(() => {
+                        log('Clearing chat after fade-out');
+                        chatBox.innerHTML = '';
+                        chatBox.style.animation = '';
+                        setTimeout(() => {
+                            log('Restarting first conversation');
+                            startFirstConversation();
+                        }, 10);
+                    }, 1000);
+                }, repeatDelay);
+            }
+
+            startFirstConversation();
+        </script>
     </div>
 
     <footer>
