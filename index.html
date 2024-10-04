@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hyx (XRayL) - 个人主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #87CEFA, #ffffff);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            margin-top: 3vh;
+            width: 100%;
+            animation: fadeInHeader 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            animation: fadeInPicture 2s ease;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 2vh;
+            animation: slideUpContent 2s ease;
+        }
+
+        .social-media, .chat-box {
+            flex: 1;
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            animation: fadeInBox 2s ease;
+            max-width: 45%;
+        }
+
+        table {
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td:first-child {
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #4682B4;
+            color: white;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            animation: fadeInFooter 3s ease;
+        }
+
+        a {
+            color: #4682B4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #315f86;
+        }
+
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 60%;
+            font-size: 1.2rem;
+        }
+
+        .left {
+            align-self: flex-start;
+            background-color: #e1f5fe;
+        }
+
+        .right {
+            align-self: flex-end;
+            background-color: #ffccbc;
+        }
+
+        @keyframes fadeInHeader {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInPicture {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUpContent {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInBox {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInFooter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInMessage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://q1.qlogo.cn/g?b=qq&nk=3542395682&s=640" alt="个人头像" class="profile-picture">
+        <div>
+            <h1>hyx (XRayL)</h1>
+            <p>开发者、创作者、Minecraft插件爱好者</p>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <div class="social-media">
+            <table>
+                <tr>
+                    <td><a href="https://github.com/hyx823894" target="_blank" rel="noopener noreferrer">GitHub:</a></td>
+                    <td><a href="https://github.com/hyx823894" target="_blank" rel="noopener noreferrer">链接</a></td>
+                </tr>
+                <tr>
+                    <td><a href="https://v.douyin.com/iBhnrREk/" target="_blank" rel="noopener noreferrer">抖音:</a></td>
+                    <td><a href="https://v.douyin.com/iBhnrREk/" target="_blank" rel="noopener noreferrer">链接</a></td>
+                </tr>
+                <tr>
+                    <td><a href="https://space.bilibili.com/1399477490" target="_blank" rel="noopener noreferrer">哔哩哔哩:</a></td>
+                    <td><a href="https://space.bilibili.com/1399477490" target="_blank" rel="noopener noreferrer">链接</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tencent://message/?uin=3542395682" target="_blank" rel="noopener noreferrer">QQ:</a></td>
+                    <td>3542395682</td>
+                </tr>
+                <tr>
+                    <td>邮箱:</td>
+                    <td>qw823894@outlook.com</td>
+                </tr>
+            </table>
+        </div>
+        <div class="chat-box">
+            <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 1s;">😱😱😱</div>
+            <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 3s;">😰😰😰</div>
+            <div class="message left" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 5s;">😎😎😎</div>
+            <div class="message right" style="opacity: 0; animation: fadeInMessage 1s ease forwards; animation-delay: 7s;">🤣🤣🤣</div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 hyx (XRayL). 保留所有权利。
+    </footer>
+</body>
+</html>
