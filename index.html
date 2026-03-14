@@ -205,6 +205,60 @@
             box-shadow: 0 0 0 4px rgba(234, 103, 94, 0.2);
         }
 
+        .edition-switch {
+            margin-top: 14px;
+            display: inline-flex;
+            gap: 8px;
+            padding: 6px;
+            border-radius: 999px;
+            background: rgba(70, 130, 180, 0.12);
+        }
+
+        .edition-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-weight: 600;
+            color: var(--brand-deep);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .edition-btn.active {
+            color: #fff;
+            background: linear-gradient(135deg, var(--brand), #5a9fd4);
+            box-shadow: 0 6px 12px rgba(70, 130, 180, 0.28);
+        }
+
+        .server-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .server-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            border: 1px solid rgba(70, 130, 180, 0.25);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 6px 12px rgba(49, 95, 134, 0.12);
+            object-fit: cover;
+        }
+
+        .server-address {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .motd {
+            white-space: pre-wrap;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
         .action-row {
             margin-top: 24px;
             display: flex;
@@ -396,6 +450,11 @@
             .server-status {
                 grid-template-columns: 1fr;
             }
+
+            .server-head {
+                align-items: flex-start;
+                flex-direction: column;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -418,25 +477,29 @@
                     <h1>hyx <small>(XRayL)</small></h1>
                     <p class="subtitle">开发者 · 创作者 · Minecraft 插件爱好者</p>
                     <div class="badge-list">
-                        <span class="badge">Minecraft</span>
-                        <span class="badge">Paper Plugin</span>
-                        <span class="badge">XRayMC</span>
+                        <span class="badge">2026 Edition</span>
+                        <span class="badge">Creative Coding</span>
+                        <span class="badge">Open Source</span>
                     </div>
                 </div>
             </article>
 
             <article class="intro-card">
                 <div>
-                    <h2 class="intro-title">XRayMC 服务器状态</h2>
+                    <h2 class="intro-title">XRayMC 服务器介绍</h2>
                     <p class="intro-text">
-                        这是我的 Minecraft 服务器展示区。支持 Java 版和基岩版连接，
-                        你可以直接使用域名加入，也可以在这里实时查看在线状态、版本和在线人数。
+                        这是我的 Minecraft 服务器展示区。你可以切换查看 Java 版和基岩版状态，
+                        包含服务器图标、MOTD、在线情况与版本信息。
                     </p>
+                    <div class="edition-switch" role="tablist" aria-label="服务器版本切换">
+                        <button class="edition-btn active" id="javaBtn" type="button">Java 版</button>
+                        <button class="edition-btn" id="bedrockBtn" type="button">基岩版</button>
+                    </div>
+                    <div class="server-head">
+                        <img class="server-icon" id="serverIcon" src="https://api.mcstatus.io/v2/icon/xraymc.top:25565" alt="服务器图标">
+                        <p class="server-address" id="serverAddress">Java 地址：xraymc.top</p>
+                    </div>
                     <div class="server-status" id="serverStatus">
-                        <div class="status-item">
-                            <span class="status-label">连接地址</span>
-                            <span class="status-value">xraymc.top:25565</span>
-                        </div>
                         <div class="status-item">
                             <span class="status-label">服务器状态</span>
                             <span class="status-value" id="serverOnline"><span class="status-dot"></span>查询中...</span>
@@ -449,11 +512,15 @@
                             <span class="status-label">在线人数</span>
                             <span class="status-value" id="serverPlayers">查询中...</span>
                         </div>
+                        <div class="status-item">
+                            <span class="status-label">MOTD</span>
+                            <span class="status-value motd" id="serverMotd">查询中...</span>
+                        </div>
                     </div>
                 </div>
                 <div class="action-row">
                     <a class="btn btn-primary" href="https://api.mcstatus.io/v2/status/java/xraymc.top:25565" target="_blank" rel="noopener noreferrer">查看状态 API</a>
-                    <a class="btn btn-secondary" href="#contact-panel">快速联系</a>
+                    <a class="btn btn-secondary" href="https://qm.qq.com/q/caI8dGVgI2" target="_blank" rel="noopener noreferrer">联系我们</a>
                 </div>
             </article>
         </section>
@@ -501,31 +568,74 @@
         const serverOnline = document.getElementById('serverOnline');
         const serverVersion = document.getElementById('serverVersion');
         const serverPlayers = document.getElementById('serverPlayers');
+        const serverMotd = document.getElementById('serverMotd');
+        const serverIcon = document.getElementById('serverIcon');
+        const serverAddress = document.getElementById('serverAddress');
+        const javaBtn = document.getElementById('javaBtn');
+        const bedrockBtn = document.getElementById('bedrockBtn');
+
+        const EDITIONS = {
+            java: {
+                label: 'Java 地址：xraymc.top',
+                statusApi: 'https://api.mcstatus.io/v2/status/java/xraymc.top:25565?query=true&timeout=5',
+                iconApi: 'https://api.mcstatus.io/v2/icon/xraymc.top:25565'
+            },
+            bedrock: {
+                label: '基岩版地址：xraymc.top 端口 1101',
+                statusApi: 'https://api.mcstatus.io/v2/status/bedrock/xraymc.top:1101?timeout=5',
+                iconApi: 'https://api.mcstatus.io/v2/icon/xraymc.top:25565'
+            }
+        };
+
+        let currentEdition = 'java';
+
+        function formatPlayers(players) {
+            const online = players?.online;
+            const max = players?.max;
+            if (online == null) return '未知';
+            if (max == null || max === 0) return String(online);
+            return `${online} / ${max}`;
+        }
+
+        function setActiveEdition(edition) {
+            currentEdition = edition;
+            javaBtn.classList.toggle('active', edition === 'java');
+            bedrockBtn.classList.toggle('active', edition === 'bedrock');
+            serverAddress.textContent = EDITIONS[edition].label;
+            serverIcon.src = EDITIONS[edition].iconApi;
+            fetchServerStatus();
+        }
 
         async function fetchServerStatus() {
-            const endpoint = 'https://api.mcstatus.io/v2/status/java/xraymc.top:25565?query=true&timeout=5';
+            const cfg = EDITIONS[currentEdition];
             try {
-                const response = await fetch(endpoint);
+                const response = await fetch(cfg.statusApi);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
 
                 if (data.online) {
                     serverOnline.innerHTML = '<span class="status-dot status-online"></span>在线';
-                    serverVersion.textContent = data.version?.name_clean || '未知';
-                    const online = data.players?.online ?? 0;
-                    const max = data.players?.max ?? '?';
-                    serverPlayers.textContent = `${online} / ${max}`;
+                    serverVersion.textContent = currentEdition === 'java'
+                        ? (data.version?.name_clean || data.version?.name_raw || '未知')
+                        : (data.version?.name || '未知');
+                    serverPlayers.textContent = formatPlayers(data.players);
+                    serverMotd.textContent = data.motd?.clean || '暂无 MOTD';
                 } else {
                     serverOnline.innerHTML = '<span class="status-dot status-offline"></span>离线';
                     serverVersion.textContent = '离线';
-                    serverPlayers.textContent = '0 / 0';
+                    serverPlayers.textContent = '0';
+                    serverMotd.textContent = '服务器离线';
                 }
             } catch (error) {
                 serverOnline.innerHTML = '<span class="status-dot status-offline"></span>获取失败';
                 serverVersion.textContent = '暂不可用';
                 serverPlayers.textContent = '暂不可用';
+                serverMotd.textContent = '暂不可用';
             }
         }
+
+        javaBtn.addEventListener('click', () => setActiveEdition('java'));
+        bedrockBtn.addEventListener('click', () => setActiveEdition('bedrock'));
 
         const threads = [
             [
@@ -562,7 +672,7 @@
             setTimeout(loopThreads, 17000);
         }
 
-        fetchServerStatus();
+        setActiveEdition('java');
         setInterval(fetchServerStatus, 30000);
         loopThreads();
     </script>
