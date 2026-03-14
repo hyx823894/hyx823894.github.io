@@ -11,11 +11,40 @@
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(to bottom, #87CEFA, #ffffff);
+            background-size: 100% 100%;
             color: #333;
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            filter: blur(2px);
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.25;
+            animation: floatingAura 14s ease-in-out infinite;
+        }
+
+        body::before {
+            top: -120px;
+            left: -80px;
+            background: radial-gradient(circle at 35% 35%, #bde8ff 0%, rgba(135, 206, 250, 0.1) 65%, transparent 100%);
+        }
+
+        body::after {
+            bottom: -140px;
+            right: -90px;
+            background: radial-gradient(circle at 60% 60%, #d7f1ff 0%, rgba(70, 130, 180, 0.15) 65%, transparent 100%);
+            animation-delay: -6s;
         }
 
         header {
@@ -50,7 +79,7 @@
             border: 5px solid #fff;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             margin: 20px;
-            animation: fadeInPicture 2s ease;
+            animation: fadeInPicture 2s ease, avatarGlow 4s ease-in-out infinite;
         }
 
         .content-container {
@@ -73,6 +102,28 @@
             border-radius: 15px;
             animation: fadeInBox 2s ease;
             max-width: 45%;
+            border: 1px solid rgba(135, 206, 250, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .social-media:hover, .chat-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 22px rgba(49, 95, 134, 0.18);
+        }
+
+        .social-media::before,
+        .chat-box::before {
+            content: '';
+            position: absolute;
+            inset: -120% auto auto -35%;
+            width: 45%;
+            height: 350%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: rotate(12deg);
+            animation: cardShimmer 7s linear infinite;
+            pointer-events: none;
         }
 
         table {
@@ -123,6 +174,12 @@
             border-radius: 15px;
             max-width: 80%;
             font-size: 1.2rem;
+            animation-fill-mode: both;
+            transition: transform 0.3s ease;
+        }
+
+        .message:hover {
+            transform: translateY(-2px);
         }
 
         .left {
@@ -145,6 +202,11 @@
             to { opacity: 1; transform: scale(1); }
         }
 
+        @keyframes avatarGlow {
+            0%, 100% { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 0 rgba(135, 206, 250, 0.1); }
+            50% { box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35), 0 0 20px rgba(135, 206, 250, 0.45); }
+        }
+
         @keyframes slideUpContent {
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
@@ -153,6 +215,11 @@
         @keyframes fadeInBox {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes cardShimmer {
+            0% { transform: translateX(-210%) rotate(12deg); }
+            65%, 100% { transform: translateX(350%) rotate(12deg); }
         }
 
         @keyframes fadeInFooter {
@@ -183,6 +250,32 @@
         @keyframes fadeInRow {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatingAura {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+            50% { transform: translateY(18px) translateX(10px) scale(1.08); }
+        }
+
+        @media (max-width: 900px) {
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+                width: 94%;
+            }
+
+            .social-media, .chat-box {
+                max-width: 100%;
+                width: 100%;
+                margin: 12px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
