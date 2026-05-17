@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PlayRoom 插件介绍页，展示大厅房间调度、存档协作、实例池、桥接通信和管理能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>PlayRoom 插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-playroom">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                PlayRoom
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">房间流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-playroom image-icon" aria-label="PlayRoom图标">
+                    <img src="../assets/images/plugin-icons/playroom.webp" alt="PlayRoom图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">PlayRoom</h1>
+                <p class="subtitle">大厅房间调度插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">大厅 · 房间 · 存档 · 桥接</p>
+                <h2 class="hero-title">联机大厅，可靠的房间中心</h2>
+                <p class="hero-text">PlayRoom 负责在大厅统一创建房间、分配实例、转送玩家、保存世界，并通过房间桥接插件回传状态。玩家用菜单即可开房、读档、分享副本和使用联合存档。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">三模块</h3><p class="mini-text">大厅、房间桥接和共享协议。</p></article>
+                <article class="stat"><h3 class="stat-title">GUI 优先</h3><p class="mini-text">命令可用，菜单更直观。</p></article>
+                <article class="stat"><h3 class="stat-title">自动闭环</h3><p class="mini-text">创建、进入、保存和回收串联。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它不是单一房间服插件，而是大厅侧的房间调度系统，帮助服主管理实例池、模板、桥接密钥、空闲回收、同步和维护状态。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">房间创建与加入</h3><p class="mini-text">支持密码房间、版本选择、世界预设和房间列表加入。</p></article>
+                <article class="mini-card"><h3 class="mini-title">个人存档管理</h3><p class="mini-text">支持新建、覆盖、重命名、描述、固定和删除存档。</p></article>
+                <article class="mini-card"><h3 class="mini-title">分享与联合存档</h3><p class="mini-text">可分享副本，也能建立双人联合存档并加锁。</p></article>
+                <article class="mini-card"><h3 class="mini-title">实例池调度</h3><p class="mini-text">从静态实例或标准模板中分配可用房间。</p></article>
+                <article class="mini-card"><h3 class="mini-title">桥接通信</h3><p class="mini-text">房间服回传状态，让大厅掌握实例运行情况。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">房间流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">大厅开房</h3><p class="step-text">玩家从菜单选择预设、版本或存档。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">分配实例</h3><p class="step-text">大厅调度可用房间并转送玩家。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">游玩保存</h3><p class="step-text">无人时自动进入关闭保存流程。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">回收同步</h3><p class="step-text">房间状态通过桥接回传给大厅。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持版本</h3><p class="info-text">面向 Paper 1.21.4 与 Java 21。</p></article>
+                <article class="info-item"><h3 class="info-title">兼容说明</h3><p class="info-text">设计中包含 Folia 支持。</p></article>
+                <article class="info-item"><h3 class="info-title">管理重点</h3><p class="info-text">实例池、标准模板、桥接密钥和维护模式。</p></article>
+                <article class="info-item"><h3 class="info-title">适用场景</h3><p class="info-text">大厅服、小游戏房间、副本和私有房间。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">部署时请保证大厅端与房间桥接端密钥一致，并先在测试实例验证保存流程。</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="死亡笔记插件介绍页，展示写名触发、死亡倒计时、离线补死、视觉演出和基础配置。">
+    <meta name="theme-color" content="#07111f">
+    <title>死亡笔记插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-deathnote">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                死亡笔记
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">使用流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-deathnote image-icon" aria-label="死亡笔记图标">
+                    <img src="../assets/images/plugin-icons/deathnote.webp" alt="死亡笔记图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">死亡笔记</h1>
+                <p class="subtitle">DeathNote · 黑暗契约玩法插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">写名 · 倒计时 · 红黑压迫感</p>
+                <h2 class="hero-title">把名字写下，命运开始倒计时</h2>
+                <p class="hero-text">死亡笔记为服务器加入带有仪式感的处决玩法。授权玩家获取专属笔记后，在第一页写下在线玩家名即可触发公告、闪电、粒子、标题和死亡倒计时。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">写名触发</h3><p class="mini-text">在第一页写下有效在线玩家名。</p></article>
+                <article class="stat"><h3 class="stat-title">状态保存</h3><p class="mini-text">倒计时和离线补死可跨重启恢复。</p></article>
+                <article class="stat"><h3 class="stat-title">氛围演出</h3><p class="mini-text">标题、闪电、粒子和动作栏共同表现。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">插件适合剧情服、整活服、活动服和管理测试场景，用一本带指纹的可写书承载写名、锁定目标与延迟处决流程。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">专属笔记</h3><p class="mini-text">通过 /getnote 获取带标记的死亡笔记。</p></article>
+                <article class="mini-card"><h3 class="mini-title">倒计时处决</h3><p class="mini-text">识别目标后启动公告、倒计时和最终死亡流程。</p></article>
+                <article class="mini-card"><h3 class="mini-title">离线补死</h3><p class="mini-text">目标离线或服务器重启后仍能恢复未完成状态。</p></article>
+                <article class="mini-card"><h3 class="mini-title">电影化效果</h3><p class="mini-text">支持闪电、粒子、投影文字、天气和时间氛围。</p></article>
+                <article class="mini-card"><h3 class="mini-title">权限控制</h3><p class="mini-text">通过权限限制获取和使用范围。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">使用流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">获取笔记</h3><p class="step-text">拥有权限的玩家执行 /getnote。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">写下名字</h3><p class="step-text">在第一页写入有效在线玩家名。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">启动倒计时</h3><p class="step-text">插件公告并播放视觉和音效反馈。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">完成清理</h3><p class="step-text">目标死亡后清理状态，避免残留任务。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持版本</h3><p class="info-text">基于 Paper 1.21.4 接口开发。</p></article>
+                <article class="info-item"><h3 class="info-title">运行环境</h3><p class="info-text">需要 Java 21，无需数据库。</p></article>
+                <article class="info-item"><h3 class="info-title">权限节点</h3><p class="info-text">note.all 可授予完整功能权限。</p></article>
+                <article class="info-item"><h3 class="info-title">当前版本</h3><p class="info-text">版本 7.0，包含持久化、离线补死和主要视觉表现。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">建议仅在活动、剧情或管理场景中开放使用权限。</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="填坑球插件介绍页，展示雪球触发、CoreProtect 记录回溯、连通坑洞检测、分批修复和基础配置。">
+    <meta name="theme-color" content="#07111f">
+    <title>填坑球插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-fillball">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                填坑球
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">使用流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-fillball image-icon" aria-label="填坑球图标">
+                    <img src="../assets/images/plugin-icons/fillball.webp" alt="填坑球图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">填坑球</h1>
+                <p class="subtitle">一颗球，补回被挖开的地形</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">雪球落点 · 记录回溯 · 自动修复</p>
+                <h2 class="hero-title">把填坑交给雪球，把方块还给地形</h2>
+                <p class="hero-text">填坑球基于 CoreProtect 记录工作。玩家抛出专属雪球后，插件会从命中位置寻找相连坑洞，读取曾经被移除的方块记录，并分批恢复可修复区域。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">专属触发</h3><p class="mini-text">普通雪球不会误触发修复。</p></article>
+                <article class="stat"><h3 class="stat-title">记录回溯</h3><p class="mini-text">依赖 CoreProtect 找回原本方块。</p></article>
+                <article class="stat"><h3 class="stat-title">分批恢复</h3><p class="mini-text">大坑修复时降低单次卡顿风险。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它面向生存服、建筑服和管理维护场景，用可发放、可冷却、可识别的专属雪球承载自动填坑流程，减少人工补方块的时间和误差。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">专属雪球触发</h3><p class="mini-text">使用 /tkq 获取填坑球，右键抛出后检测落点附近坑洞。</p></article>
+                <article class="mini-card"><h3 class="mini-title">回溯方块记录</h3><p class="mini-text">按配置时间范围查询被移除方块，尽量还原原地形材料。</p></article>
+                <article class="mini-card"><h3 class="mini-title">连通坑洞修复</h3><p class="mini-text">从入口识别相连空洞，避免无关区域被误填。</p></article>
+                <article class="mini-card"><h3 class="mini-title">分批放置</h3><p class="mini-text">把恢复操作拆到多个批次，降低服务端瞬时压力。</p></article>
+                <article class="mini-card"><h3 class="mini-title">中文反馈</h3><p class="mini-text">修复进度、失败原因和依赖状态都会用中文提示。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">使用流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">获取填坑球</h3><p class="step-text">管理员或玩家按权限执行 /tkq 获取专属雪球。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">瞄准坑洞</h3><p class="step-text">把雪球抛向需要修复的坑洞入口或附近位置。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">查询记录</h3><p class="step-text">插件读取 CoreProtect 数据，筛选可恢复方块。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">分批修复</h3><p class="step-text">按配置逐步恢复地形，并输出中文结果。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持版本</h3><p class="info-text">基于 1.21.4 服务端接口开发。</p></article>
+                <article class="info-item"><h3 class="info-title">运行依赖</h3><p class="info-text">需要 CoreProtect 提供方块记录。</p></article>
+                <article class="info-item"><h3 class="info-title">适用场景</h3><p class="info-text">适合地表破坏、施工缺口、矿坑和爆破坑修复。</p></article>
+                <article class="info-item"><h3 class="info-title">安全重点</h3><p class="info-text">普通雪球不触发，修复范围由记录和连通检测共同限制。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">使用前请确认 CoreProtect 正常记录方块变动，否则插件无法准确回溯原方块。</p>
+    </main>
+</body>
+</html>

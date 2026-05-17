@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="附魔书生成器插件介绍页，展示中文命令、高等级附魔书、铁砧应用增强、配置热加载与特殊附魔扩展接口。">
+    <meta name="theme-color" content="#07111f">
+    <title>附魔书生成器插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-enchbook">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                附魔书生成器
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">使用流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-enchbook image-icon" aria-label="附魔书生成器图标">
+                    <img src="../assets/images/plugin-icons/enchbook.webp" alt="附魔书生成器图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">附魔书生成器</h1>
+                <p class="subtitle">EnchBookGenerator · 高等级附魔书与铁砧增强</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">生成 · 发放 · 实装高等级附魔</p>
+                <h2 class="hero-title">让附魔书像真正的魔法道具一样可控</h2>
+                <p class="hero-text">附魔书生成器用中文命令快速生成指定附魔、全部原版附魔或其他插件注册的特殊附魔书。最高支持 255 级附魔，并通过铁砧监听让高等级附魔真实应用到装备结果中。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">版本 1.0.8</h3><p class="mini-text">面向 Paper 1.21.4。</p></article>
+                <article class="stat"><h3 class="stat-title">255 级上限</h3><p class="mini-text">支持超出原版上限的高等级附魔。</p></article>
+                <article class="stat"><h3 class="stat-title">中文命令</h3><p class="mini-text">发放、列表、特殊附魔和重载均中文化。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它适合服务器管理、活动奖励、测试装备和特殊玩法，用命令直接发放精确等级的附魔书，减少手动合成与物品编辑成本。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">指定附魔生成</h3><p class="mini-text">按附魔名称、等级、数量和目标玩家生成附魔书。</p></article>
+                <article class="mini-card"><h3 class="mini-title">全部附魔发放</h3><p class="mini-text">一条命令生成全部原版附魔，便于测试和展示。</p></article>
+                <article class="mini-card"><h3 class="mini-title">铁砧真实应用</h3><p class="mini-text">把附魔书内的高等级安全写入结果物品。</p></article>
+                <article class="mini-card"><h3 class="mini-title">配置热加载</h3><p class="mini-text">支持重载数量、分页、提醒和铁砧增强设置。</p></article>
+                <article class="mini-card"><h3 class="mini-title">特殊附魔接口</h3><p class="mini-text">其他插件可接入自定义特殊附魔书生成逻辑。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">使用流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">选择命令</h3><p class="step-text">执行 /enchbook 给予、全部、特殊、列表或重载。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">生成附魔书</h3><p class="step-text">插件检查等级、数量、玩家和背包空间。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">发放物品</h3><p class="step-text">背包不足时按配置处理掉落或提示。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">铁砧应用</h3><p class="step-text">玩家在铁砧中把高等级附魔写入目标物品。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持环境</h3><p class="info-text">Paper 1.21.4 与 Java 21。</p></article>
+                <article class="info-item"><h3 class="info-title">权限节点</h3><p class="info-text">enchbook.use 和 enchbook.reload 控制使用与重载。</p></article>
+                <article class="info-item"><h3 class="info-title">配置重点</h3><p class="info-text">最大发放数量、列表分页、目标提醒和铁砧增强。</p></article>
+                <article class="info-item"><h3 class="info-title">扩展方式</h3><p class="info-text">提供特殊附魔注册表与提供器接口。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">示例：/enchbook 给予 击退 255，可生成高等级击退附魔书。</p>
+    </main>
+</body>
+</html>

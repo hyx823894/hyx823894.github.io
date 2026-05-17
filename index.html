@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="uxu（XRayL）的个人主页，展示自制插件、服务器状态和联系方式。">
+    <meta name="theme-color" content="#87CEFA">
+    <title>uxu 的个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-top: #87CEFA;
+            --bg-bottom: #eef8ff;
+            --brand: #4682B4;
+            --brand-deep: #315f86;
+            --text: #22313f;
+            --muted: #5d7183;
+            --card: rgba(255, 255, 255, 0.78);
+            --card-border: rgba(70, 130, 180, 0.18);
+            --shadow: 0 18px 40px rgba(30, 73, 105, 0.15);
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --motion-fast: 0.18s ease;
+            --motion-normal: 0.28s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+            scroll-behavior: smooth;
+        }
+
+        body {
+            position: relative;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .copyable-domain {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0 3px;
+            padding: 4px 10px;
+            border: 1px solid rgba(70, 130, 180, 0.28);
+            border-radius: 999px;
+            background: rgba(70, 130, 180, 0.14);
+            color: var(--brand-deep);
+            font-weight: 700;
+            user-select: text;
+            -webkit-user-select: text;
+            cursor: pointer;
+            transition: transform var(--motion-fast), background-color var(--motion-fast), border-color var(--motion-fast);
+        }
+
+        .copyable-domain::after {
+            content: '点击复制';
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .copyable-domain:hover {
+            transform: translateY(-1px);
+            border-color: rgba(70, 130, 180, 0.42);
+            background: rgba(70, 130, 180, 0.2);
+        }
+
+        .copyable-domain.copied::after {
+            content: '已复制';
+            color: #39b872;
+        }
+
+        .page {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            padding: 28px 0 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .profile-card,
+        .intro-card,
+        .panel {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 12px rgba(30, 73, 105, 0.06);
+            contain: layout paint;
+            transition: transform var(--motion-normal), border-color var(--motion-normal), background-color var(--motion-normal);
+        }
+
+        .profile-card {
+            padding: 28px;
+            text-align: center;
+            animation: riseIn 0.8s ease;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 12px rgba(49, 95, 134, 0.12);
+        }
+
+        h1 {
+            margin: 18px 0 8px;
+            font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        .badge-list {
+            margin: 20px 0 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .plugin-entry {
+            margin-top: 16px;
+        }
+
+        .plugin-entry-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            border: 1px solid rgba(70, 130, 180, 0.2);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 16px 18px;
+            cursor: pointer;
+            color: var(--brand-deep);
+            text-align: left;
+            box-shadow: 0 3px 8px rgba(49, 95, 134, 0.05);
+            transition: transform var(--motion-fast), background-color var(--motion-fast), border-color var(--motion-fast);
+        }
+
+        .plugin-entry-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .plugin-entry-btn:active {
+            transform: translateY(0) scale(0.99);
+        }
+
+        .plugin-entry-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .plugin-entry-title {
+            font-size: 0.98rem;
+            font-weight: 600;
+        }
+
+        .plugin-entry-desc {
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .plugin-entry-arrow {
+            flex: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--brand), #5a9fd4);
+            color: #fff;
+            box-shadow: 0 3px 8px rgba(70, 130, 180, 0.16);
+            transition: transform var(--motion-fast);
+        }
+
+        .plugin-entry-btn:hover .plugin-entry-arrow {
+            transform: translateX(3px);
+        }
+
+        .plugin-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: #dff3ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 60;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity var(--motion-normal);
+        }
+
+        .plugin-modal-overlay.closing,
+        .plugin-modal-overlay.show {
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .plugin-modal-overlay.show {
+            opacity: 1;
+        }
+
+        .plugin-modal-overlay.closing {
+            animation: modalOverlayOut var(--motion-normal) forwards;
+        }
+
+        .plugin-modal-dialog {
+            width: min(760px, 92vw);
+            max-height: min(78vh, 760px);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            background: #ffffff;
+            box-shadow: 0 8px 22px rgba(30, 73, 105, 0.1);
+            padding: 24px;
+            opacity: 0;
+            transform: translateY(18px) scale(0.98);
+            transition: transform var(--motion-normal), opacity var(--motion-normal);
+        }
+
+        .plugin-modal-overlay.show .plugin-modal-dialog {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .plugin-modal-overlay.closing .plugin-modal-dialog {
+            animation: modalDialogOut var(--motion-normal) forwards;
+        }
+
+        .plugin-modal-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .plugin-modal-title {
+            margin: 0;
+            color: var(--brand-deep);
+            font-size: 1.15rem;
+        }
+
+        .plugin-modal-subtitle {
+            margin: 8px 0 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.92rem;
+        }
+
+        .plugin-modal-close {
+            flex: none;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--brand-deep);
+            background: rgba(70, 130, 180, 0.12);
+            font-size: 1.25rem;
+            transition: transform var(--motion-fast), background-color var(--motion-fast);
+        }
+
+        .plugin-modal-close:hover {
+            transform: rotate(4deg);
+            background: rgba(70, 130, 180, 0.18);
+        }
+
+        .plugin-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            overflow: auto;
+            padding-right: 4px;
+        }
+
+        .plugin-card {
+            border-radius: 18px;
+            border: 1px solid rgba(70, 130, 180, 0.18);
+            background: rgba(255, 255, 255, 0.94);
+            padding: 16px;
+            box-shadow: 0 3px 8px rgba(49, 95, 134, 0.05);
+            animation: popIn 0.45s ease both;
+            transition: transform var(--motion-fast), border-color var(--motion-fast), background-color var(--motion-fast);
+        }
+
+        .plugin-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(70, 130, 180, 0.3);
+            background: #fff;
+        }
+
+        .plugin-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .plugin-title-row {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plugin-card-icon {
+            flex: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 8px 18px rgba(49, 95, 134, 0.14);
+        }
+
+        .plugin-name {
+            min-width: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--brand-deep);
+            overflow-wrap: anywhere;
+        }
+
+        .plugin-state {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(70, 130, 180, 0.12);
+            color: var(--brand-deep);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .plugin-state.locked {
+            background: rgba(93, 113, 131, 0.12);
+            color: var(--muted);
+        }
+
+        .plugin-desc {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .plugin-actions {
+            margin-top: 14px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .plugin-link,
+        .plugin-disabled {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .plugin-link {
+            color: #fff;
+            background: linear-gradient(135deg, var(--brand), #5a9fd4);
+            box-shadow: 0 3px 8px rgba(70, 130, 180, 0.14);
+        }
+
+        .plugin-link,
+        .plugin-disabled {
+            transition: transform var(--motion-fast), background-color var(--motion-fast), opacity var(--motion-fast);
+        }
+
+        .plugin-link:hover {
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .plugin-disabled {
+            color: var(--muted);
+            background: rgba(93, 113, 131, 0.12);
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(70, 130, 180, 0.12);
+            color: var(--brand-deep);
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: transform var(--motion-fast), background-color var(--motion-fast);
+        }
+
+        .badge:hover {
+            transform: translateY(-1px);
+            background: rgba(70, 130, 180, 0.18);
+        }
+
+        .intro-card {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            animation: riseIn 0.9s ease;
+        }
+
+        .intro-title {
+            margin: 0;
+            font-size: clamp(1.5rem, 2.1vw, 2.1rem);
+        }
+
+        .intro-text {
+            margin: 14px 0 0;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 56ch;
+        }
+
+        .server-status {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .status-item {
+            background: rgba(70, 130, 180, 0.1);
+            border-radius: 12px;
+            padding: 10px 12px;
+            min-height: 64px;
+            transition: transform var(--motion-normal), opacity var(--motion-normal), background-color var(--motion-normal);
+        }
+
+        .server-status.is-refreshing .status-item {
+            opacity: 0.72;
+            transform: translateY(1px);
+        }
+
+        .status-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .status-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--brand-deep);
+            word-break: break-all;
+            transition: opacity var(--motion-normal), color var(--motion-normal);
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+            background: #9fb0bf;
+            outline: 4px solid rgba(159, 176, 191, 0.18);
+            transition: background-color var(--motion-normal), outline-color var(--motion-normal), transform var(--motion-normal);
+        }
+
+        .status-online {
+            background: #39b872;
+            outline-color: rgba(57, 184, 114, 0.2);
+        }
+
+        .status-offline {
+            background: #ea675e;
+            outline-color: rgba(234, 103, 94, 0.2);
+        }
+
+        .edition-switch {
+            margin-top: 14px;
+            position: relative;
+            display: inline-grid;
+            grid-template-columns: repeat(2, minmax(74px, 1fr));
+            padding: 6px;
+            border-radius: 999px;
+            background: rgba(70, 130, 180, 0.12);
+        }
+
+        .edition-switch::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: calc((100% - 12px) / 2);
+            height: calc(100% - 12px);
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--brand), #5a9fd4);
+            transform: translateX(0);
+            transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 0;
+        }
+
+        .edition-switch.bedrock-selected::before {
+            transform: translateX(100%);
+        }
+
+        .edition-btn {
+            position: relative;
+            z-index: 1;
+            border: none;
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-weight: 600;
+            color: var(--brand-deep);
+            background: transparent;
+            cursor: pointer;
+            transition: transform var(--motion-fast), color 0.24s ease;
+        }
+
+        .edition-btn.active {
+            color: #fff;
+        }
+
+        .edition-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .edition-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .server-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .server-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            border: 1px solid rgba(70, 130, 180, 0.25);
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 2px 6px rgba(49, 95, 134, 0.06);
+            object-fit: cover;
+            transition: opacity var(--motion-normal), transform var(--motion-normal);
+        }
+
+        .server-icon.loading {
+            opacity: 0.72;
+            transform: scale(0.98);
+        }
+
+        .server-address {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .motd {
+            white-space: pre-wrap;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .action-row {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform var(--motion-fast), background var(--motion-fast), opacity var(--motion-fast);
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(135deg, var(--brand), #5a9fd4);
+            box-shadow: 0 3px 8px rgba(70, 130, 180, 0.16);
+        }
+
+        .btn-secondary {
+            color: var(--brand-deep);
+            background: rgba(70, 130, 180, 0.12);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .grid {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 24px;
+        }
+
+        .panel {
+            padding: 22px;
+            animation: riseIn 1s ease;
+            content-visibility: auto;
+            contain-intrinsic-size: 280px;
+        }
+
+        .panel h2 {
+            margin: 0 0 14px;
+            font-size: 1.15rem;
+        }
+
+        .social-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.96rem;
+        }
+
+        .social-table tr {
+            transition: background-color var(--motion-fast);
+        }
+
+        .social-table tr:hover {
+            background-color: rgba(70, 130, 180, 0.08);
+        }
+
+        .social-table td {
+            padding: 12px 6px;
+            border-bottom: 1px solid rgba(70, 130, 180, 0.15);
+        }
+
+        .social-table td:first-child {
+            width: 100px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none;
+            transition: color var(--motion-fast), opacity var(--motion-fast);
+        }
+
+        a:hover {
+            color: var(--brand-deep);
+        }
+
+        a:active {
+            opacity: 0.72;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid rgba(70, 130, 180, 0.35);
+            outline-offset: 3px;
+        }
+
+        .chat-box {
+            height: 320px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+        }
+
+        .message {
+            max-width: 82%;
+            border-radius: 14px;
+            padding: 10px 14px;
+            font-size: 0.96rem;
+            line-height: 1.45;
+            animation: popIn 0.45s ease both;
+        }
+
+        .message.left {
+            align-self: flex-start;
+            background: #e6f6ff;
+        }
+
+        .message.right {
+            align-self: flex-end;
+            background: #ffd9ca;
+        }
+
+        .message a {
+            word-break: break-all;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #2b597c;
+            font-size: 0.92rem;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes modalOverlayOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes modalDialogOut {
+            from {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+        }
+
+        @media (max-width: 980px) {
+            .hero,
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                display: grid;
+                align-items: center;
+                text-align: left;
+                gap: 14px;
+                grid-template-columns: 120px 1fr;
+            }
+
+            .avatar {
+                width: 110px;
+                height: 110px;
+            }
+
+            .badge-list {
+                justify-content: flex-start;
+            }
+
+            .server-status {
+                grid-template-columns: 1fr;
+            }
+
+            .server-head {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .plugin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <article class="profile-card">
+                <img class="avatar" src="https://q1.qlogo.cn/g?b=qq&nk=3542395682&s=640" alt="uxu 头像">
+                <div>
+                    <h1>uxu <small>(XRayL)</small></h1>
+                    <p class="subtitle">开发者 · 创作者 · 我的世界插件爱好者</p>
+                    <div class="badge-list">
+                        <span class="badge">我的世界</span>
+                        <span class="badge">Paper 插件</span>
+                        <span class="badge">XRayMC</span>
+                    </div>
+                    <section class="plugin-entry" aria-label="自制插件列表">
+                        <button class="plugin-entry-btn" id="pluginEntryBtn" type="button" aria-haspopup="dialog" aria-controls="pluginModal">
+                            <span class="plugin-entry-copy">
+                                <span class="plugin-entry-title">自制插件列表</span>
+                                <span class="plugin-entry-desc">点击打开窗口查看插件详情</span>
+                            </span>
+                            <span class="plugin-entry-arrow" aria-hidden="true">→</span>
+                        </button>
+                    </section>
+                </div>
+            </article>
+
+            <article class="intro-card">
+                <div>
+                    <h2 class="intro-title">XRayMC 服务器介绍</h2>
+                    <p class="intro-text">
+                        这是我的《我的世界》服务器展示区。你可以切换查看 Java 版和基岩版状态，
+                        包含服务器图标、服务器描述、在线情况与版本信息。
+                    </p>
+                    <div class="edition-switch" id="editionSwitch" role="tablist" aria-label="服务器版本切换">
+                        <button class="edition-btn active" id="javaBtn" type="button">Java 版</button>
+                        <button class="edition-btn" id="bedrockBtn" type="button">基岩版</button>
+                    </div>
+                    <div class="server-head">
+                        <img class="server-icon" id="serverIcon" src="https://api.mcstatus.io/v2/icon/xraymc.top:25565" alt="服务器图标">
+                        <p class="server-address" id="serverAddress">Java 版地址：<span class="copyable-domain" role="button" tabindex="0" title="点击复制服务器地址">xraymc.top</span></p>
+                    </div>
+                    <div class="server-status" id="serverStatus" aria-live="polite">
+                        <div class="status-item">
+                            <span class="status-label">服务器状态</span>
+                            <span class="status-value" id="serverOnline"><span class="status-dot"></span>查询中...</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">游戏版本</span>
+                            <span class="status-value" id="serverVersion">查询中...</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">在线人数</span>
+                            <span class="status-value" id="serverPlayers">查询中...</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">服务器描述</span>
+                            <span class="status-value motd" id="serverMotd">查询中...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-row">
+                    <a class="btn btn-primary" href="https://api.mcstatus.io/v2/status/java/xraymc.top:25565" target="_blank" rel="noopener noreferrer">查看状态接口</a>
+                    <a class="btn btn-secondary" href="https://qm.qq.com/q/caI8dGVgI2" target="_blank" rel="noopener noreferrer">联系我们</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="grid">
+            <article class="panel" id="contact-panel">
+                <h2>社交与联系</h2>
+                <table class="social-table">
+                    <tr>
+                        <td>GitHub</td>
+                        <td><a href="https://github.com/uxu823894" target="_blank" rel="noopener noreferrer">github.com/uxu823894</a></td>
+                    </tr>
+                    <tr>
+                        <td>抖音</td>
+                        <td><a href="https://v.douyin.com/iBhnrREk/" target="_blank" rel="noopener noreferrer">v.douyin.com/iBhnrREk</a></td>
+                    </tr>
+                    <tr>
+                        <td>Bilibili</td>
+                        <td><a href="https://space.bilibili.com/1399477490" target="_blank" rel="noopener noreferrer">space.bilibili.com/1399477490</a></td>
+                    </tr>
+                    <tr>
+                        <td>QQ</td>
+                        <td><a href="tencent://message/?uin=3542395682">3542395682</a></td>
+                    </tr>
+                    <tr>
+                        <td>邮箱</td>
+                        <td><a href="mailto:qw823894@outlook.com">qw823894@outlook.com</a></td>
+                    </tr>
+                </table>
+            </article>
+
+            <article class="panel">
+                <h2>QQ 聊天记录</h2>
+                <div class="chat-box" id="chatBox" aria-live="polite"></div>
+            </article>
+        </section>
+
+        <footer>
+            &copy; 2026 uxu（XRayL）。保留所有权利。
+        </footer>
+    </main>
+
+    <div class="plugin-modal-overlay" id="pluginModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pluginModalTitle" aria-describedby="pluginModalDesc">
+        <div class="plugin-modal-dialog">
+            <div class="plugin-modal-head">
+                <div>
+                    <h3 class="plugin-modal-title" id="pluginModalTitle">自制插件列表</h3>
+                    <p class="plugin-modal-subtitle" id="pluginModalDesc">这里列出全部已有介绍页的自制插件，点击即可查看插件介绍。</p>
+                </div>
+                <button class="plugin-modal-close" id="pluginModalClose" type="button" aria-label="关闭窗口">×</button>
+            </div>
+            <div class="plugin-grid" id="pluginGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const serverOnline = document.getElementById('serverOnline');
+        const serverVersion = document.getElementById('serverVersion');
+        const serverPlayers = document.getElementById('serverPlayers');
+        const serverMotd = document.getElementById('serverMotd');
+        const serverStatus = document.getElementById('serverStatus');
+        const serverIcon = document.getElementById('serverIcon');
+        const serverAddress = document.getElementById('serverAddress');
+        const editionSwitch = document.getElementById('editionSwitch');
+        const javaBtn = document.getElementById('javaBtn');
+        const bedrockBtn = document.getElementById('bedrockBtn');
+        const pluginEntryBtn = document.getElementById('pluginEntryBtn');
+        const pluginModal = document.getElementById('pluginModal');
+        const pluginModalClose = document.getElementById('pluginModalClose');
+        const pluginGrid = document.getElementById('pluginGrid');
+
+        const plugins = [
+            { name: '极限优化', url: 'plugins/极限优化.html', icon: 'assets/images/plugin-icons/lagkiller.webp', desc: '通过实体降频、碰撞加速和卡顿源头搜索，降低高负载服务器压力。' },
+            { name: '填坑球', url: 'plugins/填坑球.html', icon: 'assets/images/plugin-icons/fillball.webp', desc: '使用专属雪球触发 CoreProtect 回溯，自动分批修复被挖开的坑洞。' },
+            { name: '吸铁石', url: 'plugins/吸铁石.html', icon: 'assets/images/plugin-icons/magnet.webp', desc: '把原版磁石升级为掉落物收集工具，支持普通吸取和大马力模式。' },
+            { name: '灵魂绑定', url: 'plugins/Binder.html', icon: 'assets/images/plugin-icons/binder.webp', desc: '为重要物品提供绑定、真实追踪、安全召回和防复制隔离能力。' },
+            { name: '死亡笔记', url: 'plugins/DeathNote.html', icon: 'assets/images/plugin-icons/deathnote.webp', desc: '写下玩家名字即可触发公告、闪电、粒子和死亡倒计时演出。' },
+            { name: '高级附魔书', url: 'plugins/EnchBookGenerator.html', icon: 'assets/images/plugin-icons/enchbook.webp', desc: '用中文命令生成指定附魔书，支持高等级附魔和铁砧真实应用。' },
+            { name: '钓鱼优化', url: 'plugins/Fish.html', icon: 'assets/images/plugin-icons/fish.webp', desc: '优化钓鱼节奏并加入固定奖池、稀有奖励和中文统计界面。' },
+            { name: '头衔名牌', url: 'plugins/NameTagSync.html', icon: 'assets/images/plugin-icons/nametag.webp', desc: '自动同步 LuckPerms 前后缀，让玩家身份显示在头顶名牌上。' },
+            { name: '联机大厅', url: 'plugins/PlayRoom.html', icon: 'assets/images/plugin-icons/playroom.webp', desc: '面向大厅服的入口与休闲玩法插件，提供清晰的玩家引导体验。' },
+            { name: '头衔系统', url: 'plugins/PreFix.html', icon: 'assets/images/plugin-icons/prefix.webp', desc: '提供玩家头衔展示与管理，让聊天和身份标识更醒目。' },
+            { name: '惊吓插件', url: 'plugins/Scare.html', icon: 'assets/images/plugin-icons/scare.webp', desc: '为服务器添加突发音效、视觉效果和整蛊氛围的惊吓玩法。' },
+            { name: 'RPG游戏技能', url: 'plugins/SkillJob.html', icon: 'assets/images/plugin-icons/skilljob.webp', desc: '构建职业、技能与成长体系，让玩家在 RPG 玩法中持续升级。' },
+            { name: '聊天管控', url: 'plugins/StopChat.html', icon: 'assets/images/plugin-icons/stopchat.webp', desc: '提供聊天开关与管控能力，帮助管理员快速维护服务器聊天秩序。' },
+            { name: '世界区块清理', url: 'plugins/WorldClean.html', icon: 'assets/images/plugin-icons/worldclean.webp', desc: '按规则清理世界区块和无用区域，降低存档体积与维护成本。' },
+            { name: 'XRay大厅系统', url: 'plugins/XRayLobby.html', icon: 'assets/images/plugin-icons/xraylobby.webp', desc: '整合大厅入口、核心道具、菜单导航和玩家传送流程。' },
+            { name: 'XRay天坑系统', url: 'plugins/xraypit.html', icon: 'assets/images/plugin-icons/xraypit.webp', desc: '打造 The Pit 风格竞技循环，包含击杀成长、商店补给和排行榜。' }
+        ];
+
+        const EDITIONS = {
+            java: {
+                prefix: 'Java 版地址：',
+                suffix: '',
+                statusApi: 'https://api.mcstatus.io/v2/status/java/xraymc.top:25565?query=true&timeout=5',
+                iconApi: 'https://api.mcstatus.io/v2/icon/xraymc.top:25565'
+            },
+            bedrock: {
+                prefix: '基岩版地址：',
+                suffix: '，端口 1101',
+                statusApi: 'https://api.mcstatus.io/v2/status/bedrock/xraymc.top:1101?timeout=5',
+                iconApi: 'https://api.mcstatus.io/v2/icon/xraymc.top:25565'
+            }
+        };
+
+        let currentEdition = 'java';
+        let statusRequestId = 0;
+        const MESSAGE_DELAY = 1200;
+        const THREAD_INTERVAL = 22000;
+        let modalAnimationTimer = 0;
+
+        function openPluginModal() {
+            window.clearTimeout(modalAnimationTimer);
+            pluginModal.classList.remove('closing');
+            pluginModal.classList.add('show');
+            pluginModal.setAttribute('aria-hidden', 'false');
+            pluginModalClose.focus();
+        }
+
+        function closePluginModal() {
+            if (!pluginModal.classList.contains('show')) return;
+            pluginModal.classList.remove('show');
+            pluginModal.classList.add('closing');
+            pluginModal.setAttribute('aria-hidden', 'true');
+            modalAnimationTimer = window.setTimeout(() => {
+                pluginModal.classList.remove('closing');
+            }, 280);
+        }
+
+        function createPluginCard(plugin, index) {
+            const card = document.createElement('article');
+            card.className = 'plugin-card';
+            card.style.animationDelay = `${index * 80}ms`;
+
+            const head = document.createElement('div');
+            head.className = 'plugin-card-head';
+
+            const titleRow = document.createElement('div');
+            titleRow.className = 'plugin-title-row';
+
+            const icon = document.createElement('img');
+            icon.className = 'plugin-card-icon';
+            icon.src = plugin.icon;
+            icon.alt = `${plugin.name} 插件图标`;
+            icon.loading = 'lazy';
+            icon.decoding = 'async';
+
+            const name = document.createElement('div');
+            name.className = 'plugin-name';
+            name.textContent = plugin.name;
+
+            titleRow.appendChild(icon);
+            titleRow.appendChild(name);
+
+            const state = document.createElement('span');
+            state.className = `plugin-state${plugin.url && plugin.url !== '#' ? '' : ' locked'}`;
+            state.textContent = plugin.url && plugin.url !== '#' ? '可打开' : '暂未公开';
+
+            head.appendChild(titleRow);
+            head.appendChild(state);
+
+            const desc = document.createElement('p');
+            desc.className = 'plugin-desc';
+            desc.textContent = plugin.desc || '当前项目尚未公开，后续开放后会补充介绍。';
+
+            const actions = document.createElement('div');
+            actions.className = 'plugin-actions';
+
+            if (plugin.url && plugin.url !== '#') {
+                const link = document.createElement('a');
+                link.className = 'plugin-link';
+                link.textContent = '查看介绍';
+                link.href = plugin.url;
+                if (/^https?:\/\//.test(plugin.url)) {
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                } else {
+                    link.target = '_self';
+                }
+                actions.appendChild(link);
+            } else {
+                const disabled = document.createElement('span');
+                disabled.className = 'plugin-disabled';
+                disabled.textContent = '暂未公开';
+                actions.appendChild(disabled);
+            }
+
+            card.appendChild(head);
+            card.appendChild(desc);
+            card.appendChild(actions);
+            return card;
+        }
+
+        function renderPluginGrid() {
+            pluginGrid.innerHTML = '';
+            plugins.forEach((plugin, index) => {
+                pluginGrid.appendChild(createPluginCard(plugin, index));
+            });
+        }
+
+        function formatPlayers(players) {
+            const online = players?.online;
+            const max = players?.max;
+            if (online == null) return '未知';
+            if (max == null || max === 0) return String(online);
+            return `${online} / ${max}`;
+        }
+
+        function renderServerAddress(edition) {
+            const cfg = EDITIONS[edition];
+            const domain = document.createElement('span');
+            domain.className = 'copyable-domain';
+            domain.textContent = 'xraymc.top';
+            domain.role = 'button';
+            domain.tabIndex = 0;
+            domain.title = '点击复制服务器地址';
+            serverAddress.replaceChildren(
+                document.createTextNode(cfg.prefix),
+                domain,
+                document.createTextNode(cfg.suffix)
+            );
+        }
+
+        async function copyServerDomain(target) {
+            const text = 'xraymc.top';
+            try {
+                if (navigator.clipboard?.writeText) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    const input = document.createElement('textarea');
+                    input.value = text;
+                    input.setAttribute('readonly', '');
+                    input.style.position = 'fixed';
+                    input.style.opacity = '0';
+                    document.body.appendChild(input);
+                    input.select();
+                    document.execCommand('copy');
+                    input.remove();
+                }
+                target.classList.add('copied');
+                window.setTimeout(() => target.classList.remove('copied'), 1200);
+            } catch {
+                target.classList.remove('copied');
+            }
+        }
+
+        function setActiveEdition(edition) {
+            currentEdition = edition;
+            editionSwitch.classList.toggle('bedrock-selected', edition === 'bedrock');
+            javaBtn.classList.toggle('active', edition === 'java');
+            bedrockBtn.classList.toggle('active', edition === 'bedrock');
+            renderServerAddress(edition);
+            serverIcon.src = EDITIONS[edition].iconApi;
+            serverOnline.innerHTML = '<span class="status-dot"></span>查询中...';
+            serverVersion.textContent = '查询中...';
+            serverPlayers.textContent = '查询中...';
+            serverMotd.textContent = '查询中...';
+            fetchServerStatus();
+        }
+
+        async function fetchServerStatus() {
+            const cfg = EDITIONS[currentEdition];
+            const requestId = ++statusRequestId;
+            serverStatus.setAttribute('aria-busy', 'true');
+            serverStatus.classList.add('is-refreshing');
+            serverIcon.classList.add('loading');
+            try {
+                const response = await fetch(cfg.statusApi, { cache: 'no-store' });
+                if (requestId !== statusRequestId) return;
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                if (requestId !== statusRequestId) return;
+
+                if (data.online) {
+                    serverOnline.innerHTML = '<span class="status-dot status-online"></span>在线';
+                    serverVersion.textContent = currentEdition === 'java'
+                        ? (data.version?.name_clean || data.version?.name_raw || '未知')
+                        : (data.version?.name || '未知');
+                    serverPlayers.textContent = formatPlayers(data.players);
+                    serverMotd.textContent = data.motd?.clean || '暂无服务器描述';
+                } else {
+                    serverOnline.innerHTML = '<span class="status-dot status-offline"></span>离线';
+                    serverVersion.textContent = '离线';
+                    serverPlayers.textContent = '0';
+                    serverMotd.textContent = '服务器已离线';
+                }
+            } catch {
+                if (requestId !== statusRequestId) return;
+                serverOnline.innerHTML = '<span class="status-dot status-offline"></span>获取失败';
+                serverVersion.textContent = '暂时不可用';
+                serverPlayers.textContent = '暂时不可用';
+                serverMotd.textContent = '暂时不可用';
+            } finally {
+                if (requestId === statusRequestId) {
+                    serverStatus.setAttribute('aria-busy', 'false');
+                    serverStatus.classList.remove('is-refreshing');
+                    serverIcon.classList.remove('loading');
+                }
+            }
+        }
+
+        pluginEntryBtn.addEventListener('click', openPluginModal);
+        pluginModalClose.addEventListener('click', closePluginModal);
+        pluginModal.addEventListener('click', (event) => {
+            if (event.target === pluginModal) {
+                closePluginModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && pluginModal.classList.contains('show')) {
+                closePluginModal();
+            }
+        });
+        document.addEventListener('copy', (event) => {
+            const selectedText = window.getSelection().toString().trim();
+            if (selectedText === 'xraymc.top') return;
+            event.preventDefault();
+            event.clipboardData.setData('text/plain', selectedText.includes('xraymc.top') ? 'xraymc.top' : '');
+        });
+        document.addEventListener('click', (event) => {
+            const target = event.target.closest('.copyable-domain');
+            if (target) copyServerDomain(target);
+        });
+        document.addEventListener('keydown', (event) => {
+            const target = event.target.closest?.('.copyable-domain');
+            if (target && (event.key === 'Enter' || event.key === ' ')) {
+                event.preventDefault();
+                copyServerDomain(target);
+            }
+        });
+        javaBtn.addEventListener('click', () => setActiveEdition('java'));
+        bedrockBtn.addEventListener('click', () => setActiveEdition('bedrock'));
+
+        const threads = [
+            [
+                { side: 'left', text: '😱😱😱' },
+                { side: 'right', text: '😰😰😰' },
+                { side: 'left', text: '😎😎😎' },
+                { side: 'right', text: '🤣🤣🤣' }
+            ],
+            [
+                { side: 'left', text: '在吗' },
+                { side: 'right', text: '1' },
+                { side: 'left', text: "你看看，<a href='https://space.bilibili.com/1399477490/video' target='_blank' rel='noopener noreferrer'>https://space.bilibili.com/1399477490/video</a>" },
+                { side: 'right', text: '😱😱😱' }
+            ]
+        ];
+
+        let index = 0;
+
+        function renderThread(thread) {
+            chatBox.innerHTML = '';
+            thread.forEach((msg, i) => {
+                const div = document.createElement('div');
+                div.className = `message ${msg.side}`;
+                div.style.animationDelay = `${i * MESSAGE_DELAY}ms`;
+                div.innerHTML = msg.text;
+                chatBox.appendChild(div);
+            });
+        }
+
+        let statusTimer = 0;
+        let threadTimer = 0;
+
+        function scheduleServerStatus() {
+            window.clearTimeout(statusTimer);
+            if (document.hidden) return;
+            statusTimer = window.setTimeout(async () => {
+                await fetchServerStatus();
+                scheduleServerStatus();
+            }, 30000);
+        }
+
+        function scheduleThreadLoop() {
+            window.clearTimeout(threadTimer);
+            if (document.hidden) return;
+            renderThread(threads[index]);
+            index = (index + 1) % threads.length;
+            threadTimer = window.setTimeout(scheduleThreadLoop, THREAD_INTERVAL);
+        }
+
+        function loopThreads() {
+            scheduleThreadLoop();
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                window.clearTimeout(statusTimer);
+                window.clearTimeout(threadTimer);
+                return;
+            }
+            fetchServerStatus();
+            scheduleServerStatus();
+            scheduleThreadLoop();
+        });
+
+        setActiveEdition('java');
+        renderPluginGrid();
+        scheduleServerStatus();
+        loopThreads();
+    </script>
+</body>
+</html>

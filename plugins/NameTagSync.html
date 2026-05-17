@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NameTagSync 插件介绍页，用于展示 LuckPerms 前后缀同步、PlaceholderAPI 变量解析、玩家头顶名牌刷新和轻量免配置特性。">
+    <meta name="theme-color" content="#07111f">
+    <title>NameTagSync 插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-nametag">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                NameTagSync · 头顶称号同步
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">工作流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-nametag image-icon" aria-label="头顶称号同步图标">
+                    <img src="../assets/images/plugin-icons/nametag.webp" alt="头顶称号同步图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">头顶称号同步</h1>
+                <p class="subtitle">NameTagSync · LuckPerms 名牌同步插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">前缀 · 玩家名 · 后缀</p>
+                <h2 class="hero-title">让玩家身份直接显示在头顶名牌上</h2>
+                <p class="hero-text">NameTagSync 是轻量、免配置的 Paper 玩家头顶名牌同步插件。安装后会自动读取 LuckPerms 前缀和后缀，并在安装 PlaceholderAPI 时优先解析对应变量。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">安装即用</h3><p class="mini-text">维护 LuckPerms 元数据即可同步。</p></article>
+                <article class="stat"><h3 class="stat-title">变量优先</h3><p class="mini-text">检测到 PlaceholderAPI 时优先解析变量。</p></article>
+                <article class="stat"><h3 class="stat-title">轻量刷新</h3><p class="mini-text">玩家进服、切换世界和权限更新时自动同步。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它专注处理玩家头顶名称显示，不接管聊天系统，不需要数据库，也不要求手动编写复杂名牌配置。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">自动同步前后缀</h3><p class="mini-text">读取 LuckPerms 中的前缀与后缀并组合到头顶名牌。</p></article>
+                <article class="mini-card"><h3 class="mini-title">优先解析变量</h3><p class="mini-text">PlaceholderAPI 可用时解析 LuckPerms 前后缀变量。</p></article>
+                <article class="mini-card"><h3 class="mini-title">实时轻量刷新</h3><p class="mini-text">进服、退出、切换世界和依赖变化时自动同步。</p></article>
+                <article class="mini-card"><h3 class="mini-title">计分板队伍</h3><p class="mini-text">通过队伍机制保持头顶显示稳定。</p></article>
+                <article class="mini-card"><h3 class="mini-title">免配置设计</h3><p class="mini-text">无需额外配置文件即可使用。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">工作流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">维护权限组</h3><p class="step-text">在 LuckPerms 中设置玩家或组的前缀与后缀。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">玩家进入</h3><p class="step-text">插件读取元数据并组合头顶显示内容。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">变量解析</h3><p class="step-text">如存在 PlaceholderAPI，则优先解析变量结果。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">自动刷新</h3><p class="step-text">权限数据变化或玩家切换状态时重新同步。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持平台</h3><p class="info-text">面向 Paper 服务端。</p></article>
+                <article class="info-item"><h3 class="info-title">核心依赖</h3><p class="info-text">需要 LuckPerms 提供前后缀数据。</p></article>
+                <article class="info-item"><h3 class="info-title">可选依赖</h3><p class="info-text">PlaceholderAPI 用于解析变量。</p></article>
+                <article class="info-item"><h3 class="info-title">适用场景</h3><p class="info-text">身份展示、权限组展示、职业和阵营显示。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">管理员只需要维护 LuckPerms 元数据，插件会负责把身份同步到头顶名牌。</p>
+    </main>
+</body>
+</html>

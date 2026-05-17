@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SoulBinder 灵魂绑定插件介绍页，展示物品绑定、真实追踪、安全召回、防复制隔离、GUI 菜单和数据库备份能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>SoulBinder 灵魂绑定插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-binder">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                SoulBinder · 灵魂绑定
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">使用流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-binder image-icon" aria-label="灵魂绑定图标">
+                    <img src="../assets/images/plugin-icons/binder.webp" alt="灵魂绑定图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">灵魂绑定</h1>
+                <p class="subtitle">SoulBinder · 高安全物品绑定与召回插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">绑定 · 追踪 · 召回 · 防复制</p>
+                <h2 class="hero-title">让重要物品有归属，也能安全回家</h2>
+                <p class="hero-text">SoulBinder 面向生存服、RPG 服、经济服和高价值道具服务器。玩家可通过 /bind 菜单绑定重要装备，插件会追踪真实位置，并在召回时优先移除原物品。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">/bind 菜单</h3><p class="mini-text">玩家与管理员功能集中在 GUI。</p></article>
+                <article class="stat"><h3 class="stat-title">真实追踪</h3><p class="mini-text">覆盖背包、容器、掉落物和展示框等位置。</p></article>
+                <article class="stat"><h3 class="stat-title">安全召回</h3><p class="mini-text">先定位并移除原物品，再归还绑定者。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它不是简单补发道具，而是围绕绑定编号、位置扫描、重复物隔离、不可离包保护和数据库备份建立的物品安全系统。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">全 GUI 操作</h3><p class="mini-text">绑定、列表、详情、体检、召回和维护都能点击完成。</p></article>
+                <article class="mini-card"><h3 class="mini-title">真实位置追踪</h3><p class="mini-text">支持背包、容器、末影箱、潜影盒、展示框与盔甲架等位置。</p></article>
+                <article class="mini-card"><h3 class="mini-title">不可离包保护</h3><p class="mini-text">可限制绑定物被丢弃、放入容器或放到展示实体上。</p></article>
+                <article class="mini-card"><h3 class="mini-title">重复物隔离</h3><p class="mini-text">发现疑似复制物时可隔离并交给管理员处理。</p></article>
+                <article class="mini-card"><h3 class="mini-title">数据库备份</h3><p class="mini-text">支持 SQLite 数据维护和手动备份。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">使用流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">打开菜单</h3><p class="step-text">玩家输入 /bind 进入绑定界面。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">绑定物品</h3><p class="step-text">选择重要装备、纪念道具或活动奖励生成绑定记录。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">刷新体检</h3><p class="step-text">查看物品状态、位置和风险提示。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">安全召回</h3><p class="step-text">需要时执行召回，插件优先移除原物品再归还。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">适合服务器</h3><p class="info-text">生存服、RPG 服、经济服和高价值道具服。</p></article>
+                <article class="info-item"><h3 class="info-title">核心存储</h3><p class="info-text">使用本地数据库保存绑定编号和追踪状态。</p></article>
+                <article class="info-item"><h3 class="info-title">管理能力</h3><p class="info-text">管理员可深度扫描、隔离重复物和备份数据库。</p></article>
+                <article class="info-item"><h3 class="info-title">安全边界</h3><p class="info-text">召回逻辑优先减少复制与误补风险。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">高价值物品建议开启绑定保护，并定期备份数据库。</p>
+    </main>
+</body>
+</html>

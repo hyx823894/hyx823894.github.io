@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LagKiller 极限优化插件介绍页，展示 JavaAgent Hook、实体降频、碰撞加速、卡顿源头搜索、紧急熔断与中文自检诊断能力。">
+    <meta name="theme-color" content="#07120d">
+    <title>LagKiller 极限优化插件介绍</title>
+    <style>
+        @font-face { font-family: "ZiYuYuanTi"; src: url("./assets/fonts/ZiYuYuanTi.ttf") format("truetype"); font-weight: 400 900; font-style: normal; font-display: swap; }
+        :root {
+            --text: #effff5; --muted: #b7d8c4; --soft: #78aa8b; --green: #7dff91; --green-dark: #19c56d; --cyan: #61e8ff;
+            --line: rgba(125, 255, 145, 0.22); --shadow: 0 28px 90px rgba(0, 0, 0, 0.42); --radius-xl: 30px; --radius-lg: 20px;
+            --font-cn: "ZiYuYuanTi", "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0; min-height: 100vh; color: var(--text); font-family: var(--font-cn); overflow-x: hidden;
+            background: radial-gradient(circle at 16% 12%, rgba(125, 255, 145, 0.32), transparent 28%), radial-gradient(circle at 82% 18%, rgba(97, 232, 255, 0.18), transparent 30%), radial-gradient(circle at 48% 92%, rgba(255, 207, 102, 0.1), transparent 34%), linear-gradient(145deg, #020604 0%, #07120d 45%, #123323 100%);
+            -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+        }
+        body::before, body::after { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        body::before { background-image: linear-gradient(rgba(125,255,145,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(125,255,145,.07) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(circle at center, #000 0%, transparent 75%); }
+        body::after { opacity: .7; background: linear-gradient(90deg, transparent, rgba(97,232,255,.2), transparent) 0 22% / 280px 1px, linear-gradient(90deg, transparent, rgba(125,255,145,.18), transparent) 0 68% / 340px 1px, radial-gradient(circle, rgba(125,255,145,.35) 0 1px, transparent 2px) 12% 18% / 150px 150px; animation: signalDrift 16s linear infinite; }
+        .page { position: relative; z-index: 1; width: min(1180px, 92%); margin: 0 auto; padding: 34px 0 76px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 28px; }
+        .brand, .quick-links a, .btn, .chip { border: 1px solid var(--line); background: rgba(2, 8, 5, .58); box-shadow: 0 0 0 1px rgba(125,255,145,.08), 0 0 32px rgba(36,216,120,.12); }
+        .brand { display: inline-flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 999px; font-weight: 900; letter-spacing: .06em; }
+        .brand-mark { width: 20px; height: 20px; border-radius: 7px; background: linear-gradient(135deg, var(--green), var(--cyan)); box-shadow: 0 0 24px rgba(125,255,145,.72); transform: rotate(45deg); }
+        .quick-links, .hero-actions, .tag-row, .command-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .quick-links { justify-content: flex-end; }
+        .quick-links a, .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 15px; border-radius: 999px; color: var(--text); text-decoration: none; font-weight: 900; transition: transform .24s ease, border-color .24s ease, background .24s ease; }
+        .quick-links a:hover, .btn:hover, .mini-card:hover, .timeline-item:hover { transform: translateY(-5px); border-color: rgba(125,255,145,.58); background: rgba(15,48,33,.88); }
+        .hero { display: grid; grid-template-columns: .92fr 1.08fr; gap: 24px; }
+        .glass-card, .section, .mini-card, .timeline-item { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(13,42,29,.9), rgba(2,8,5,.76)); box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.08); backdrop-filter: blur(16px); }
+        .plugin-identity { position: relative; min-height: 520px; display: grid; place-items: center; padding: 34px; border-radius: var(--radius-xl); overflow: hidden; text-align: center; }
+        .plugin-identity::before { content: ""; position: absolute; width: 350px; height: 350px; border-radius: 50%; border: 1px solid rgba(125,255,145,.2); background: conic-gradient(from 90deg, transparent 0 20%, rgba(125,255,145,.42) 21% 25%, transparent 26% 48%, rgba(97,232,255,.34) 49% 53%, transparent 54% 100%); box-shadow: inset 0 0 44px rgba(36,216,120,.16), 0 0 62px rgba(97,232,255,.12); animation: radarRotate 8s linear infinite; }
+        .plugin-identity::after { content: "采样 · 降频 · 熔断 · 源头搜索 · 自检"; position: absolute; left: 28px; right: 28px; bottom: 26px; color: rgba(183,216,196,.78); letter-spacing: .16em; font-size: .86rem; }
+        .identity-inner { position: relative; z-index: 1; }
+        .plugin-icon { position: relative; width: 176px; height: 176px; margin: 0 auto; display: grid; place-items: center; border-radius: 44px; color: #041009; font-size: 4.2rem; font-weight: 900; background: radial-gradient(circle at 34% 28%, #eafff1 0 12%, var(--green) 13% 42%, var(--green-dark) 43% 72%, #047044 73% 100%); box-shadow: 0 0 0 8px rgba(125,255,145,.08), 0 28px 76px rgba(36,216,120,.34), 0 0 58px rgba(97,232,255,.2); transform: rotate(-6deg); animation: iconPulse 4.6s ease-in-out infinite; }
+        .plugin-icon::before { content: ""; position: absolute; width: 104px; height: 104px; border: 10px solid rgba(4,16,9,.82); border-top-color: transparent; border-left-color: rgba(4,16,9,.28); border-radius: 50%; }
+        .plugin-icon::after { content: ""; position: absolute; width: 44px; height: 44px; border-radius: 50%; background: rgba(4,16,9,.86); box-shadow: 0 -56px 0 -13px rgba(4,16,9,.66), 45px 30px 0 -16px rgba(4,16,9,.54), -46px 29px 0 -17px rgba(4,16,9,.48); }
+        .name-cn { margin: 30px 0 8px; font-size: clamp(2.35rem, 4vw, 4.1rem); line-height: 1.08; }
+        .name-subtitle { margin: 0; color: var(--green); font-size: clamp(1rem, 2vw, 1.26rem); font-weight: 900; letter-spacing: .12em; }
+        .hero-content { border-radius: var(--radius-xl); padding: 42px; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+        .label { display: inline-flex; width: fit-content; gap: 8px; padding: 8px 13px; border: 1px solid rgba(97,232,255,.3); border-radius: 999px; color: var(--cyan); background: rgba(97,232,255,.08); font-size: .9rem; font-weight: 900; }
+        .hero-title { margin: 18px 0 0; font-size: clamp(2.2rem, 5vw, 5rem); line-height: 1.02; letter-spacing: -.05em; text-wrap: balance; }
+        .hero-title strong { color: var(--green); text-shadow: 0 0 26px rgba(125,255,145,.28); }
+        .hero-text, .section-lead, .mini-text, .footer-note { color: var(--muted); line-height: 1.88; }
+        .hero-text { margin: 20px 0 0; max-width: 70ch; font-size: 1.06rem; }
+        .btn.primary { color: #031009; border-color: transparent; background: linear-gradient(135deg, var(--green), var(--cyan)); box-shadow: 0 18px 40px rgba(36,216,120,.24); }
+        .stats, .intro-grid, .feature-grid, .info-grid, .timeline { display: grid; gap: 16px; }
+        .stats { grid-template-columns: repeat(3, 1fr); } .intro-grid { grid-template-columns: repeat(2, 1fr); } .feature-grid { grid-template-columns: repeat(3, 1fr); } .info-grid, .timeline { grid-template-columns: repeat(4, 1fr); }
+        .stat, .mini-card, .timeline-item { position: relative; min-height: 126px; padding: 20px; border-radius: var(--radius-lg); overflow: hidden; transition: transform .24s ease, border-color .24s ease, background .24s ease; }
+        .stat { background: rgba(2,8,5,.42); border: 1px solid rgba(255,255,255,.08); }
+        .stat strong { display: block; color: var(--green); font-size: 1.32rem; margin-bottom: 6px; } .stat span { color: var(--soft); font-size: .92rem; }
+        .section { margin-top: 24px; padding: 30px; border-radius: var(--radius-xl); }
+        .section-title { display: flex; align-items: center; gap: 12px; margin: 0 0 20px; font-size: clamp(1.45rem, 3vw, 2.15rem); }
+        .section-title::before { content: ""; width: 12px; height: 32px; border-radius: 999px; background: linear-gradient(180deg, var(--green), var(--cyan)); box-shadow: 0 0 24px rgba(125,255,145,.34); }
+        .section-lead { margin: -8px 0 22px; max-width: 84ch; }
+        .mini-card::after { content: ""; position: absolute; width: 130px; height: 130px; right: -48px; bottom: -58px; border-radius: 50%; background: radial-gradient(circle, rgba(125,255,145,.2), transparent 62%); opacity: 0; transition: opacity .24s ease, transform .24s ease; }
+        .mini-card:hover::after { opacity: 1; transform: scale(1.15); }
+        .mini-title { position: relative; z-index: 1; margin: 0 0 11px; color: var(--text); font-size: 1.12rem; } .mini-text { position: relative; z-index: 1; margin: 0; }
+        .tag, .chip { display: inline-flex; align-items: center; min-height: 32px; padding: 0 11px; border-radius: 999px; font-size: .86rem; font-weight: 900; }
+        .tag { color: #031009; background: rgba(125,255,145,.92); } .chip { color: var(--green); }
+        .time { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-bottom: 12px; border-radius: 14px; color: #031009; background: linear-gradient(135deg, var(--green), var(--cyan)); font-weight: 900; }
+        .command-panel { margin-top: 18px; padding: 18px; border-radius: var(--radius-lg); border: 1px solid rgba(97,232,255,.2); background: rgba(2,8,5,.5); } .command-panel p { margin: 0 0 12px; color: var(--muted); }
+        .footer-note { margin: 26px auto 0; max-width: 88ch; text-align: center; }
+        @keyframes iconPulse { 0%, 100% { transform: translateY(0) rotate(-6deg) scale(1); } 50% { transform: translateY(-12px) rotate(3deg) scale(1.03); } }
+        @keyframes radarRotate { to { transform: rotate(360deg); } } @keyframes signalDrift { to { background-position: 280px 22%, -340px 68%, 160px 120px; } }
+        @media (max-width: 980px) { .topbar, .hero-actions { align-items: flex-start; flex-direction: column; } .quick-links { justify-content: flex-start; } .hero, .stats, .intro-grid, .feature-grid, .info-grid, .timeline { grid-template-columns: 1fr; } .plugin-identity { min-height: 420px; } .hero-content { padding: 30px; } }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header class="topbar"><div class="brand"><span class="brand-mark" aria-hidden="true"></span>LagKiller · 极限优化</div><nav class="quick-links" aria-label="页面导航"><a href="#intro">插件介绍</a><a href="#features">核心能力</a><a href="#workflow">优化流程</a><a href="#info">运行信息</a></nav></header>
+        <section class="hero" aria-label="插件概览">
+            <article class="glass-card plugin-identity"><div class="identity-inner"><div class="plugin-icon" aria-label="极限优化图标">●</div><h1 class="name-cn">LagKiller</h1><p class="name-subtitle">面向高负载服务器的极限优化插件</p></div></article>
+            <article class="glass-card hero-content"><div><span class="label">实体降频 · 碰撞加速 · 源头搜索 · 自检诊断</span><h2 class="hero-title">把卡顿压力<strong>压回可控范围</strong></h2><p class="hero-text">LagKiller 面向 Paper 与 Leaves 服务端，通过 JavaAgent Hook 介入实体、碰撞、寻路与脑行为等热点路径，根据距离、密度、负载采样和紧急阈值动态降频。它优先保护玩家附近体验，只处理远距、高密度或过载区域，让服务器在实体堆积、刷怪压力和掉落物暴增时仍能保持更稳定的运行状态。</p></div><div class="hero-actions"><a class="btn primary" href="#features">查看优化能力</a><a class="btn" href="#workflow">了解运行逻辑</a></div><div class="stats" aria-label="插件摘要"><div class="stat"><strong>启动级接入</strong><span>通过启动参数加载 JavaAgent</span></div><div class="stat"><strong>多维采样</strong><span>结合 TPS、MSPT、距离与密度决策</span></div><div class="stat"><strong>中文管理</strong><span>使用 /lr 查看状态、统计与自检</span></div></div></article>
+        </section>
+        <section class="section" id="intro"><h2 class="section-title">插件介绍</h2><p class="section-lead">极限优化适合实体数量大、红石农场多、刷怪塔密集或经常出现瞬时掉落物压力的服务器。插件不是粗暴清空实体，而是通过“观测负载、识别热点、保护近处、限制远处、紧急熔断”的方式降低计算成本，并为管理员提供可解释的中文诊断信息。</p><div class="intro-grid"><article class="mini-card"><h3 class="mini-title">玩家体验优先</h3><p class="mini-text">默认保护玩家周围区域，尽量避免战斗、交互、农场观察和载具使用时出现明显异常，只把优化压力放在低感知风险区域。</p><div class="tag-row"><span class="tag">近处保护</span><span class="tag">远距降频</span><span class="tag">密度识别</span></div></article><article class="mini-card"><h3 class="mini-title">管理员可追踪</h3><p class="mini-text">通过状态、统计、源头、诊断、自检和钩子命令查看优化是否生效、哪些世界被纳入优化，以及 JavaAgent 是否正确加载。</p><div class="tag-row"><span class="tag">世界统计</span><span class="tag">源头定位</span><span class="tag">自检报告</span></div></article></div></section>
+        <section class="section" id="features"><h2 class="section-title">核心能力</h2><div class="feature-grid"><article class="mini-card"><h3 class="mini-title">实体逻辑降频</h3><p class="mini-text">对远距或高密度实体的普通 Tick、物品 Tick、载具 Tick、寻路和脑行为进行错峰放行，减少单 Tick 峰值压力。</p></article><article class="mini-card"><h3 class="mini-title">碰撞扫描加速</h3><p class="mini-text">针对大量生物互相挤压产生的平方级碰撞成本，提供成对碰撞降频与扫描入口降频，降低密集区域消耗。</p></article><article class="mini-card"><h3 class="mini-title">自适应预算</h3><p class="mini-text">每 Tick 限制低优先级 Hook 的放行数量，正常模式保护玩家附近实体，过载时把预算集中给更重要的逻辑。</p></article><article class="mini-card"><h3 class="mini-title">紧急熔断策略</h3><p class="mini-text">当 TPS 或 MSPT 触发紧急阈值时，对高密度区域采取更强降频，优先阻止全服实体同时拖垮主线程。</p></article><article class="mini-card"><h3 class="mini-title">卡顿源头搜索</h3><p class="mini-text">过载时自动定位实体密度异常区块，可优先处理低风险实体，并临时冻结远离玩家的拥挤生物。</p></article><article class="mini-card"><h3 class="mini-title">诊断与安全回退</h3><p class="mini-text">未加载 JavaAgent 时进入诊断模式，命令仍可使用；自检会说明配置、Hook、采样和优化引擎状态。</p></article></div></section>
+        <section class="section" id="workflow"><h2 class="section-title">优化流程</h2><div class="timeline"><article class="timeline-item"><div class="time">一</div><h3 class="mini-title">加载 Hook</h3><p class="mini-text">服务端启动时通过 JavaAgent 接入底层热点路径，插件启动后检查 Hook 是否生效。</p></article><article class="timeline-item"><div class="time">二</div><h3 class="mini-title">采样负载</h3><p class="mini-text">持续读取 TPS 与 MSPT，并结合实体距离、区块密度、交互保护和配置阈值判断风险。</p></article><article class="timeline-item"><div class="time">三</div><h3 class="mini-title">动态降频</h3><p class="mini-text">对远距、高密度或过载实体执行错峰策略，让高成本逻辑分散到更多 Tick 中。</p></article><article class="timeline-item"><div class="time">四</div><h3 class="mini-title">诊断反馈</h3><p class="mini-text">管理员通过命令查看统计、源头、自检和配置概要，确认优化范围与当前运行状态。</p></article></div><div class="command-panel" aria-label="常用命令"><p>常用管理命令：</p><div class="command-list"><span class="chip">/lr 状态</span><span class="chip">/lr 统计</span><span class="chip">/lr 源头</span><span class="chip">/lr 诊断</span><span class="chip">/lr 自检</span><span class="chip">/lr 钩子</span><span class="chip">/lr 配置</span><span class="chip">/lr 重载</span></div></div></section>
+        <section class="section" id="info"><h2 class="section-title">运行信息</h2><div class="info-grid"><article class="mini-card"><h3 class="mini-title">支持服务端</h3><p class="mini-text">面向 Paper 与 Leaves 一点二十一点四环境开发，适合高实体负载的生存服与大型玩法服。</p></article><article class="mini-card"><h3 class="mini-title">启动参数</h3><p class="mini-text">需要在服务端启动参数中加入 -javaagent:plugins/lagkiller-版本号.jar，确保底层 Hook 生效。</p></article><article class="mini-card"><h3 class="mini-title">权限节点</h3><p class="mini-text">lagkiller.admin 允许管理员查看状态、统计、诊断、自检、配置概要并执行重载。</p></article><article class="mini-card"><h3 class="mini-title">当前版本</h3><p class="mini-text">当前发布版本为一点一五零，已包含实体降频、碰撞加速、卡顿源头搜索、诊断模式与中文命令反馈。</p></article></div></section>
+        <p class="footer-note">安装提示：将插件文件放入服务端插件目录，并在启动脚本加入对应版本的 JavaAgent 参数后重启服务器。首次使用建议先执行 /lr 自检 与 /lr 统计，确认 Hook、优化引擎和采样信息均正常。</p>
+    </main>
+</body>
+</html>

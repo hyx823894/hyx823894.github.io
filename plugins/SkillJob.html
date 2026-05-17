@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkillJobs 职业技能插件介绍页，展示职业选择、技能释放、技能物品、冷却前摇、支援技能和模块热更新能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>SkillJobs 职业技能插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-skilljob">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                SkillJobs · 职业技能
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">玩家流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-skilljob image-icon" aria-label="SkillJobs图标">
+                    <img src="../assets/images/plugin-icons/skilljob.webp" alt="SkillJobs图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">SkillJobs</h1>
+                <p class="subtitle">职业 · 技能 · 热更新</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">剑士 · 箭手 · 药师</p>
+                <h2 class="hero-title">让玩家带着职业身份进入战斗</h2>
+                <p class="hero-text">SkillJobs 为服务器加入轻量职业与技能玩法。玩家选择职业后，随着等级解锁三段技能，并通过命令或技能物品释放，冷却、前摇、权限和建造保护共同维持战斗节奏。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">三条职业</h3><p class="mini-text">剑士、箭手、药师定位清晰。</p></article>
+                <article class="stat"><h3 class="stat-title">技能物品</h3><p class="mini-text">可用模型数据制作资源包外观。</p></article>
+                <article class="stat"><h3 class="stat-title">模块维护</h3><p class="mini-text">主插件搭配模块加载器，便于热更新。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">内置剑士、箭手、药师三条路线，分别覆盖近战爆发、远程压制、治疗与毒药支援，适合活动服、RPG 服和轻量战斗玩法。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">职业选择</h3><p class="mini-text">玩家使用职业选择界面确定路线。</p></article>
+                <article class="mini-card"><h3 class="mini-title">三段技能</h3><p class="mini-text">每个职业随等级解锁三个技能。</p></article>
+                <article class="mini-card"><h3 class="mini-title">冷却与前摇</h3><p class="mini-text">技能释放带有节奏和反制空间。</p></article>
+                <article class="mini-card"><h3 class="mini-title">权限保护</h3><p class="mini-text">覆盖使用、选职、释放、管理和绕过限制等权限。</p></article>
+                <article class="mini-card"><h3 class="mini-title">模块热更新</h3><p class="mini-text">可查看、重载和升级模块，便于玩法迭代。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">玩家流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">选择职业</h3><p class="step-text">输入 /skill choose 打开职业界面。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">获得技能</h3><p class="step-text">按职业和等级发放对应技能或技能物品。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">释放技能</h3><p class="step-text">通过命令或物品触发技能，受冷却和前摇控制。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">持续升级</h3><p class="step-text">等级提升后解锁更强技能和战斗定位。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">职业路线</h3><p class="info-text">剑士、箭手、药师。</p></article>
+                <article class="info-item"><h3 class="info-title">管理方向</h3><p class="info-text">技能、冷却、前摇、权限和模块维护。</p></article>
+                <article class="info-item"><h3 class="info-title">适用场景</h3><p class="info-text">RPG、活动服、团队战和轻量职业玩法。</p></article>
+                <article class="info-item"><h3 class="info-title">扩展方式</h3><p class="info-text">模块加载器支持后续玩法更新。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">建议先确定服务器战斗节奏，再调整技能冷却、前摇和等级门槛。</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WorldClean 插件介绍页，展示世界区块扫描、长期白名单、数据库备份、清单导出和离线清理辅助能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>WorldClean 插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-worldclean">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                WorldClean · 世界瘦身
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">清理流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-worldclean image-icon" aria-label="WorldClean图标">
+                    <img src="../assets/images/plugin-icons/worldclean.webp" alt="WorldClean图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">WorldClean</h1>
+                <p class="subtitle">服务器世界区块瘦身辅助工具</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">长期扫描 · 区块白名单 · 离线清理</p>
+                <h2 class="hero-title">把该保留的区块留下来，把清理风险降下来</h2>
+                <p class="hero-text">WorldClean 从方块记录、出生点、家、传送点、领地和手动标记中收集已使用区块，写入插件自有长期白名单数据库。插件负责扫描、管理、备份和导出，不会在开服状态下直接删除世界区块。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">长期白名单</h3><p class="mini-text">持续保留已使用区块记录。</p></article>
+                <article class="stat"><h3 class="stat-title">多来源扫描</h3><p class="mini-text">方块记录、出生点、领地和手动坐标。</p></article>
+                <article class="stat"><h3 class="stat-title">离线执行</h3><p class="mini-text">导出清单后配合工具清理。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它适合地图体积持续增长、需要定期维护世界文件的生存服、养老服和大型社区服，重点是在清理前确认哪些区块被玩家使用过。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">多来源区块扫描</h3><p class="mini-text">读取方块放置记录，并结合出生点、家、传送点、领地和手动坐标。</p></article>
+                <article class="mini-card"><h3 class="mini-title">长期白名单</h3><p class="mini-text">扫描结果写入自有数据库，避免完全依赖外部记录周期。</p></article>
+                <article class="mini-card"><h3 class="mini-title">中文管理界面</h3><p class="mini-text">通过 /worldclean 查看世界统计、任务和导出状态。</p></article>
+                <article class="mini-card"><h3 class="mini-title">数据库备份</h3><p class="mini-text">支持备份长期白名单数据，降低误清理风险。</p></article>
+                <article class="mini-card"><h3 class="mini-title">清单导出</h3><p class="mini-text">导出后停服备份，再配合离线工具执行删除。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">清理流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">扫描世界</h3><p class="step-text">从多来源收集需要保留的区块。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">写入白名单</h3><p class="step-text">把结果保存到长期数据库。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">导出清单</h3><p class="step-text">生成离线清理工具可读取的保留信息。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">停服清理</h3><p class="step-text">备份后离线执行清理，避免开服误删。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">适合服务器</h3><p class="info-text">长期生存服、养老服和大型社区服。</p></article>
+                <article class="info-item"><h3 class="info-title">核心原则</h3><p class="info-text">插件不在开服状态下直接删除区块。</p></article>
+                <article class="info-item"><h3 class="info-title">数据来源</h3><p class="info-text">方块记录、出生点、家、传送点、领地和手动标记。</p></article>
+                <article class="info-item"><h3 class="info-title">维护重点</h3><p class="info-text">定期扫描、备份数据库、导出前复查。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">真正删除世界文件前，请务必停服并完整备份。</p>
+    </main>
+</body>
+</html>

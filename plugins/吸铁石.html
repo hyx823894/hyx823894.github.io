@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="吸铁石插件介绍页，展示磁力附魔书、铁砧附魔、普通吸取、大马力模式和中文服务端体验。">
+    <meta name="theme-color" content="#07111f">
+    <title>吸铁石插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-magnet">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                吸铁石
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">使用流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-magnet image-icon" aria-label="吸铁石图标">
+                    <img src="../assets/images/plugin-icons/magnet.webp" alt="吸铁石图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">吸铁石</h1>
+                <p class="subtitle">中文磁力收集插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">磁力附魔 · 掉落物吸取 · 大马力模式</p>
+                <h2 class="hero-title">让原版磁石拥有真正的磁力</h2>
+                <p class="hero-text">吸铁石把原版磁石升级为掉落物收集工具。管理员发放磁力附魔书，玩家在铁砧中附加到磁石上，右键即可把附近掉落物吸向自己。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">铁砧附魔</h3><p class="mini-text">用磁力附魔书升级原版磁石。</p></article>
+                <article class="stat"><h3 class="stat-title">两种模式</h3><p class="mini-text">普通吸取与大马力模式可切换。</p></article>
+                <article class="stat"><h3 class="stat-title">清晰反馈</h3><p class="mini-text">配合粒子、发光和拾取音效。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">插件适合生存服、空岛服、刷怪塔、矿洞探索和活动服，减少满地掉落物带来的拾取成本与混乱感。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">磁力附魔书</h3><p class="mini-text">使用 /xitieshi givebook 发放专属附魔书。</p></article>
+                <article class="mini-card"><h3 class="mini-title">普通吸取</h3><p class="mini-text">手持吸铁石右键，吸取附近 5×5 范围掉落物。</p></article>
+                <article class="mini-card"><h3 class="mini-title">大马力模式</h3><p class="mini-text">潜行右键切换后，可吸取更大范围掉落物。</p></article>
+                <article class="mini-card"><h3 class="mini-title">铁砧流程</h3><p class="mini-text">玩家消耗经验，把磁力附加到原版磁石上。</p></article>
+                <article class="mini-card"><h3 class="mini-title">低维护成本</h3><p class="mini-text">无需数据库，安装后即可注册监听与命令。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">使用流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">发放附魔书</h3><p class="step-text">执行 /xitieshi givebook [玩家] [数量]。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">合成吸铁石</h3><p class="step-text">在铁砧中把磁力附魔书附加到磁石上。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">右键吸取</h3><p class="step-text">手持吸铁石右键收集附近掉落物。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">切换模式</h3><p class="step-text">潜行右键在普通模式与大马力模式之间切换。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持版本</h3><p class="info-text">插件声明服务端接口版本为 1.20。</p></article>
+                <article class="info-item"><h3 class="info-title">运行环境</h3><p class="info-text">需要 Java 17 与 Paper 服务端。</p></article>
+                <article class="info-item"><h3 class="info-title">权限节点</h3><p class="info-text">xitieshi.command.givebook 控制发放命令。</p></article>
+                <article class="info-item"><h3 class="info-title">存储方式</h3><p class="info-text">无需数据库，主要依赖物品标记与监听逻辑。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">建议将发放命令仅授予管理员，避免磁力附魔书被无限制获取。</p>
+    </main>
+</body>
+</html>

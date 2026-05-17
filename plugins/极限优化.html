@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LagKiller 极限优化插件介绍页，展示 JavaAgent Hook、实体降频、碰撞加速、卡顿源头搜索和中文自检诊断能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>LagKiller 极限优化插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-lagkiller">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                LagKiller · 极限优化
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">优化流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-lagkiller image-icon" aria-label="极限优化图标">
+                    <img src="../assets/images/plugin-icons/lagkiller.webp" alt="极限优化图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">极限优化</h1>
+                <p class="subtitle">LagKiller · 高负载服务器优化插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">实体降频 · 碰撞加速 · 源头搜索 · 自检诊断</p>
+                <h2 class="hero-title">把卡顿压力压回可控范围</h2>
+                <p class="hero-text">LagKiller 面向 Paper 与 Leaves 服务端，通过 JavaAgent Hook 介入实体、碰撞、寻路与脑行为等热点路径。它优先保护玩家附近体验，把优化集中在远距、高密度或过载区域。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">启动级接入</h3><p class="mini-text">通过启动参数加载 JavaAgent。</p></article>
+                <article class="stat"><h3 class="stat-title">多维采样</h3><p class="mini-text">结合 TPS、MSPT、距离与密度决策。</p></article>
+                <article class="stat"><h3 class="stat-title">中文管理</h3><p class="mini-text">使用 /lr 查看状态、统计和自检。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">适合实体数量大、红石农场多、刷怪塔密集或经常出现掉落物压力的服务器。插件不粗暴清空实体，而是通过观测负载、识别热点、保护近处和限制远处来降低计算成本。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">实体逻辑降频</h3><p class="mini-text">对远距或高密度实体的 Tick、寻路和脑行为进行错峰放行。</p></article>
+                <article class="mini-card"><h3 class="mini-title">碰撞扫描加速</h3><p class="mini-text">降低大量生物互相挤压时的碰撞计算压力。</p></article>
+                <article class="mini-card"><h3 class="mini-title">紧急熔断策略</h3><p class="mini-text">TPS 或 MSPT 触发阈值时，对高风险区域执行更强降频。</p></article>
+                <article class="mini-card"><h3 class="mini-title">卡顿源头搜索</h3><p class="mini-text">过载时定位实体密度异常区块，方便管理员优先处理。</p></article>
+                <article class="mini-card"><h3 class="mini-title">诊断与回退</h3><p class="mini-text">未加载 JavaAgent 时进入诊断模式，命令仍可用于排查。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">优化流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">加载 Hook</h3><p class="step-text">服务端启动时接入底层热点路径，并检查 Hook 是否生效。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">采样负载</h3><p class="step-text">持续读取 TPS、MSPT、实体距离和区块密度。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">动态降频</h3><p class="step-text">对远距、高密度或过载实体执行错峰策略。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">诊断反馈</h3><p class="step-text">通过中文命令查看统计、源头、自检和配置概要。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持服务端</h3><p class="info-text">面向 Paper 与 Leaves 1.21.4 环境。</p></article>
+                <article class="info-item"><h3 class="info-title">启动参数</h3><p class="info-text">需要加入 -javaagent:plugins/lagkiller-版本号.jar。</p></article>
+                <article class="info-item"><h3 class="info-title">权限节点</h3><p class="info-text">lagkiller.admin 用于管理状态、统计、诊断和重载。</p></article>
+                <article class="info-item"><h3 class="info-title">当前能力</h3><p class="info-text">包含实体降频、碰撞加速、源头搜索、诊断模式与中文反馈。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">首次使用建议执行 /lr 自检 和 /lr 统计，确认 Hook、优化引擎和采样信息正常。</p>
+    </main>
+</body>
+</html>

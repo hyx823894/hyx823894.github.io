@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PreFix 探索者头衔插件介绍页，展示头衔仓库、探索进度、任务清单、LuckPerms 权限联动和中文配置。">
+    <meta name="theme-color" content="#07111f">
+    <title>PreFix 探索者头衔插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-prefix">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                PreFix · 头衔系统
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">玩法流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-prefix image-icon" aria-label="PreFix图标">
+                    <img src="../assets/images/plugin-icons/prefix.webp" alt="PreFix图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">PreFix</h1>
+                <p class="subtitle">探索、收集、解锁属于玩家的头衔</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">头衔仓库 · 探索进度 · 权限联动</p>
+                <h2 class="hero-title">让每一次冒险，都变成可展示的荣誉</h2>
+                <p class="hero-text">PreFix 是中文头衔插件。玩家通过 /prefix 打开头衔仓库，查看已解锁与未解锁头衔；插件会记录探索、药水、植物、木材和音符盒等任务进度，完成后自动解锁头衔。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">头衔仓库</h3><p class="mini-text">左键佩戴或脱下头衔。</p></article>
+                <article class="stat"><h3 class="stat-title">自动追踪</h3><p class="mini-text">记录探索、酿造、采集和交互进度。</p></article>
+                <article class="stat"><h3 class="stat-title">权限联动</h3><p class="mini-text">通过 LuckPerms 授予和展示头衔权限。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它以 GUI 头衔仓库为核心，把服务器玩法成就整理成可佩戴、可展示、可持续扩展的头衔系统。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">中文 GUI</h3><p class="mini-text">使用 /prefix 打开头衔仓库，查看说明、状态和当前佩戴。</p></article>
+                <article class="mini-card"><h3 class="mini-title">探索进度</h3><p class="mini-text">记录结构探索、药水、植物、木材和音符盒音色。</p></article>
+                <article class="mini-card"><h3 class="mini-title">自动解锁</h3><p class="mini-text">达成条件后自动解锁头衔并提示玩家。</p></article>
+                <article class="mini-card"><h3 class="mini-title">LuckPerms 联动</h3><p class="mini-text">解锁后授予对应权限，方便聊天或称号系统读取。</p></article>
+                <article class="mini-card"><h3 class="mini-title">可扩展任务</h3><p class="mini-text">适合长期周目持续添加新头衔目标。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">玩法流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">打开仓库</h3><p class="step-text">玩家输入 /prefix 查看头衔列表。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">完成目标</h3><p class="step-text">探索、酿造、交互或收集触发进度记录。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">解锁荣誉</h3><p class="step-text">达成条件后自动获得对应头衔。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">展示身份</h3><p class="step-text">玩家在 GUI 中佩戴头衔，权限同步到展示系统。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">适用服务器</h3><p class="info-text">生存服、探索服和长期周目服。</p></article>
+                <article class="info-item"><h3 class="info-title">核心依赖</h3><p class="info-text">依赖 LuckPerms 管理头衔权限。</p></article>
+                <article class="info-item"><h3 class="info-title">主要命令</h3><p class="info-text">/prefix 打开头衔仓库。</p></article>
+                <article class="info-item"><h3 class="info-title">配置方向</h3><p class="info-text">可扩展头衔、任务条件和权限节点。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">建议把头衔目标设计为长期可追踪内容，让玩家自然参与探索与收集。</p>
+    </main>
+</body>
+</html>

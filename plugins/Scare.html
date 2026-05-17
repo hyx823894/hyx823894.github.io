@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scare 恐怖氛围插件介绍页，用于展示锁定玩家、黑暗视距、雷雨闪电、恐怖音效、Him 惊吓和管理员调试能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>Scare 恐怖氛围插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-scare">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                Scare · 恐怖氛围
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">惊吓流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-scare image-icon" aria-label="Scare图标">
+                    <img src="../assets/images/plugin-icons/scare.webp" alt="Scare图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">Scare</h1>
+                <p class="subtitle">沉浸式恐怖氛围与 Him 惊吓插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">锁定目标 · 压低视距 · 雷雨音效 · 幻影现身</p>
+                <h2 class="hero-title">把普通夜晚变成步步紧张的恐怖体验</h2>
+                <p class="hero-text">Scare 面向剧情、整蛊、活动和恐怖玩法场景。管理员可锁定指定玩家，插件会叠加低视距、低模拟距离、慢速移动、黑暗效果、雷雨闪电、洞穴音效与 Him 幻影。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">统一命令</h3><p class="mini-text">/scare 管理锁定、解除、列表、重载和测试。</p></article>
+                <article class="stat"><h3 class="stat-title">多层氛围</h3><p class="mini-text">视距、天气、药水、音效和闪电共同施压。</p></article>
+                <article class="stat"><h3 class="stat-title">安全恢复</h3><p class="mini-text">解除锁定或插件关闭后恢复状态。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">插件不是简单播放一次音效，而是围绕锁定目标、持续施压、随机干扰、幻影现身、看见即消失和结束恢复构建完整氛围链路。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">目标锁定系统</h3><p class="mini-text">锁定在线或离线玩家，目标上线后自动进入恐怖氛围。</p></article>
+                <article class="mini-card"><h3 class="mini-title">视野与行动压迫</h3><p class="mini-text">降低视距、模拟距离和移动速度。</p></article>
+                <article class="mini-card"><h3 class="mini-title">天气与音效</h3><p class="mini-text">雷雨、闪电、洞穴音效和随机干扰制造压力。</p></article>
+                <article class="mini-card"><h3 class="mini-title">Him 幻影</h3><p class="mini-text">在前方或背后短暂出现，玩家看见后自动消失。</p></article>
+                <article class="mini-card"><h3 class="mini-title">调试命令</h3><p class="mini-text">管理员可指定位置或使用测试命令验证效果。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">惊吓流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">锁定目标</h3><p class="step-text">管理员执行 /scare lock 选择玩家。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">叠加氛围</h3><p class="step-text">插件持续调整视距、移动、天气和音效。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">随机惊吓</h3><p class="step-text">按配置触发闪电、音效和 Him 幻影。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">解除恢复</h3><p class="step-text">执行 unlock 或插件关闭时恢复玩家和天气状态。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">适用场景</h3><p class="info-text">恐怖生存、剧情演出、节日活动和主播整活。</p></article>
+                <article class="info-item"><h3 class="info-title">管理命令</h3><p class="info-text">/scare 提供锁定、解除、列表、重载和测试。</p></article>
+                <article class="info-item"><h3 class="info-title">安全设计</h3><p class="info-text">解除或关闭后恢复玩家属性与天气。</p></article>
+                <article class="info-item"><h3 class="info-title">配置方向</h3><p class="info-text">可调整出现频率、位置模式、视距和音效。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">建议先在测试玩家身上验证强度，避免对普通玩家造成过度干扰。</p>
+    </main>
+</body>
+</html>

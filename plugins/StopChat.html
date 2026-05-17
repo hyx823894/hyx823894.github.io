@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StopChat 聊天审核插件介绍页，用于展示跨服审核、违禁词拦截、智能复审、处罚联动和配置能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>StopChat 聊天审核插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-stopchat">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                StopChat · 聊天审核
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">部署流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-stopchat image-icon" aria-label="StopChat图标">
+                    <img src="../assets/images/plugin-icons/stopchat.webp" alt="StopChat图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">StopChat</h1>
+                <p class="subtitle">跨服聊天安全审核插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">实时检测 · 集中审核 · 自动处罚</p>
+                <h2 class="hero-title">把聊天风险拦在发出之前</h2>
+                <p class="hero-text">StopChat 面向群组服聊天安全。子服负责捕获聊天，代理端集中执行规则匹配、智能审核、处罚联动与日志记录，帮助减少广告引流、辱骂刷屏、敏感内容和恶意规避表达。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">跨服架构</h3><p class="mini-text">Paper 子服监听，代理端集中审核。</p></article>
+                <article class="stat"><h3 class="stat-title">规则匹配</h3><p class="mini-text">违禁词树、正则、白名单和标准化处理。</p></article>
+                <article class="stat"><h3 class="stat-title">处罚联动</h3><p class="mini-text">可拦截、替换、通知、禁言、踢出或封禁。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它适合需要统一管控多子服聊天内容的服务器网络，子服使用 /stopchat health 查看通信状态，代理端使用 /stopchatbc 管理规则、测试文本、统计和重载配置。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">多层规则匹配</h3><p class="mini-text">支持违禁词、正则、白名单、大小写与全半角统一。</p></article>
+                <article class="mini-card"><h3 class="mini-title">智能审核队列</h3><p class="mini-text">可接入智能模型复审可疑消息并输出处理建议。</p></article>
+                <article class="mini-card"><h3 class="mini-title">代理端集中管理</h3><p class="mini-text">子服只监听转发，代理端保存配置并回传结果。</p></article>
+                <article class="mini-card"><h3 class="mini-title">处罚与通知</h3><p class="mini-text">联动管理员通知、LiteBans 或自定义控制台命令。</p></article>
+                <article class="mini-card"><h3 class="mini-title">审计日志</h3><p class="mini-text">记录审核、处罚和复审日志，便于复盘误判。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">部署流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">安装子服端</h3><p class="step-text">将 StopChat 子服插件放入每个 Paper 子服。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">安装代理端</h3><p class="step-text">在 BungeeCord 代理端集中配置规则与审核逻辑。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">联通检查</h3><p class="step-text">使用 /stopchat health 查看子服通信状态。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">规则维护</h3><p class="step-text">通过 /stopchatbc 测试文本、查看统计并重载配置。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">架构类型</h3><p class="info-text">Paper 子服 + BungeeCord 代理端。</p></article>
+                <article class="info-item"><h3 class="info-title">管理命令</h3><p class="info-text">/stopchat health 与 /stopchatbc。</p></article>
+                <article class="info-item"><h3 class="info-title">审核能力</h3><p class="info-text">规则匹配、智能复审、处罚联动和日志留痕。</p></article>
+                <article class="info-item"><h3 class="info-title">适用场景</h3><p class="info-text">群组服、公开服和需要集中聊天管理的服务器。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">上线前建议用测试文本覆盖常见变体，降低误判和漏判。</p>
+    </main>
+</body>
+</html>
