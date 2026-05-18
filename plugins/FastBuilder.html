@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="快速建筑插件介绍页，展示选区复制、结构文件读取、粒子预览、材料确认、自动建造和撤销返还能力。">
+    <meta name="theme-color" content="#07111f">
+    <title>快速建筑插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-fastbuilder">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                快速建筑
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">建造流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-fastbuilder image-icon" aria-label="快速建筑图标">
+                    <img src="../assets/images/plugin-icons/fastbuilder.webp" alt="快速建筑图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">快速建筑</h1>
+                <p class="subtitle">结构预览与自动建造插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">选区复制 · 结构读取 · 材料确认 · 撤销返还</p>
+                <h2 class="hero-title">把建筑蓝图变成可预览、可确认的施工流程</h2>
+                <p class="hero-text">快速建筑面向纸端服务器，把选区复制、结构文件读取、粒子预览、材料核对和分批自动建造串成一条安全流程。玩家可以先看见结构位置，再确认材料并开始施工。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">结构复用</h3><p class="mini-text">支持保存和读取结构文件。</p></article>
+                <article class="stat"><h3 class="stat-title">施工预览</h3><p class="mini-text">粒子展示位置，确认后再开工。</p></article>
+                <article class="stat"><h3 class="stat-title">进度可控</h3><p class="mini-text">材料不足可暂停，建错可撤销。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它适合需要反复搭建样板建筑、活动场景、公共设施或玩家自建蓝图的服务器。插件不会直接跳过确认，而是先展示预览和材料需求，降低放错位置、材料不足和误操作风险。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">选区复制</h3><p class="mini-text">使用 /fb pos1 与 /fb pos2 标记区域，把非空气方块复制到玩家缓存。</p></article>
+                <article class="mini-card"><h3 class="mini-title">结构文件管理</h3><p class="mini-text">可保存为结构文件，也能读取世界编辑组件支持的结构格式。</p></article>
+                <article class="mini-card"><h3 class="mini-title">粒子预览</h3><p class="mini-text">建造前按照旋转角展示粒子轮廓，确认位置后再打开材料界面。</p></article>
+                <article class="mini-card"><h3 class="mini-title">材料确认与续建</h3><p class="mini-text">生存模式实际消耗材料，不足时暂停并提示缺少内容。</p></article>
+                <article class="mini-card"><h3 class="mini-title">撤销返还</h3><p class="mini-text">支持撤销最近一次建造，并返还可校验的材料消耗。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">建造流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">准备蓝图</h3><p class="step-text">复制选区，或把结构文件放入插件结构目录。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">发起预览</h3><p class="step-text">使用 /fb build、/fb paste 或 /fb preview 查看落点。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">确认材料</h3><p class="step-text">在材料界面核对需求，确认后开始分批放置。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">跟踪进度</h3><p class="step-text">通过进度界面继续、取消或在需要时执行撤销。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持平台</h3><p class="info-text">面向纸端一点二十一点四环境。</p></article>
+                <article class="info-item"><h3 class="info-title">核心依赖</h3><p class="info-text">需要世界编辑服务端组件提供结构文件读写能力。</p></article>
+                <article class="info-item"><h3 class="info-title">主命令</h3><p class="info-text">使用 /fb 管理选点、复制、保存、预览、建造和撤销。</p></article>
+                <article class="info-item"><h3 class="info-title">适用场景</h3><p class="info-text">样板建筑、活动场地、公共设施和玩家蓝图复用。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">建议先用小结构测试材料消耗、旋转角和撤销流程，再开放给玩家长期使用。</p>
+    </main>
+</body>
+</html>

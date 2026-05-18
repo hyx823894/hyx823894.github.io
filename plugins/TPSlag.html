@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="每秒刻数压测插件介绍页，展示 每秒刻数动态限速器、可回滚区块压力、机器人攻击场景模拟、状态查看和中文操作流程。">
+    <meta name="theme-color" content="#07111f">
+    <title>每秒刻数压测插件介绍</title>
+    <link rel="stylesheet" href="../assets/css/plugin-page.css">
+</head>
+<body class="theme-tpslag">
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="../index.html" aria-label="返回主页">
+                <span class="brand-mark" aria-hidden="true"></span>
+                每秒刻数压测 · 压测演练
+            </a>
+            <nav class="quick-links" aria-label="页面导航">
+                <a href="#intro">插件介绍</a>
+                <a href="#features">核心能力</a>
+                <a href="#workflow">压测流程</a>
+                <a href="#info">运行信息</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="插件概览">
+            <article class="identity">
+                <div class="plugin-icon icon-tpslag image-icon" aria-label="每秒刻数压测图标">
+                    <img src="../assets/images/plugin-icons/tpslag.webp" alt="每秒刻数压测图标" loading="eager" decoding="async">
+                </div>
+                <h1 class="name-cn">每秒刻数压测</h1>
+                <p class="subtitle">动态限速与机器人场景模拟插件</p>
+            </article>
+
+            <article class="hero-copy">
+                <p class="label">目标每秒刻数 · 可回滚负载 · 机器人模拟 · 状态坐标</p>
+                <h2 class="hero-title">用可控压力复现卡顿和攻击场景</h2>
+                <p class="hero-text">每秒刻数压测面向测试服和管理演练，提供每秒刻数动态限速器与真实实体机器人场景模拟。它会在远离玩家的位置制造可回滚压力，并允许管理员随时查看状态、坐标或彻底停止清理。</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#features">查看核心能力</a>
+                    <a class="btn secondary" href="#info">查看运行信息</a>
+                </div>
+                <div class="stat-list" aria-label="插件摘要">
+                <article class="stat"><h3 class="stat-title">目标限速</h3><p class="mini-text">自动尝试把每秒刻数稳定到指定值。</p></article>
+                <article class="stat"><h3 class="stat-title">安全回滚</h3><p class="mini-text">停止时回滚方块并解除强制加载。</p></article>
+                <article class="stat"><h3 class="stat-title">机器人演练</h3><p class="mini-text">使用真实实体模拟冲击场景。</p></article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="intro">
+            <h2 class="section-title">插件介绍</h2>
+            <p class="section-lead">它适合测试服、压测环境和应急演练，不建议在正式玩家活动高峰随意启用。插件重点是用可观察、可停止、可恢复的方式制造压力，帮助管理员验证监控、告警和优化策略。</p>
+        </section>
+
+        <section class="section" id="features">
+            <h2 class="section-title">核心能力</h2>
+            <div class="card-list">
+                <article class="mini-card"><h3 class="mini-title">每秒刻数动态限速</h3><p class="mini-text">使用 /tpslag start 指定目标每秒刻数，并动态调节压力强度。</p></article>
+                <article class="mini-card"><h3 class="mini-title">多类型负载</h3><p class="mini-text">组合 CPU 计算、内存分配、区块读写和主线程延迟。</p></article>
+                <article class="mini-card"><h3 class="mini-title">远离玩家执行</h3><p class="mini-text">默认在远离出生点的强制加载区块制造压力。</p></article>
+                <article class="mini-card"><h3 class="mini-title">机器人攻击模拟</h3><p class="mini-text">使用 /abot 创建真实实体，模拟大量机器人冲击与加入消息。</p></article>
+                <article class="mini-card"><h3 class="mini-title">状态与清理</h3><p class="mini-text">支持查看状态和坐标，停止时清理任务、方块和运行状态。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <h2 class="section-title">压测流程</h2>
+            <div class="timeline">
+                <article class="timeline-item"><div class="step-index">一</div><h3 class="step-title">设定目标</h3><p class="step-text">使用 /tpslag start 后附目标每秒刻数，或按配置启动。</p></article>
+                <article class="timeline-item"><div class="step-index">二</div><h3 class="step-title">制造负载</h3><p class="step-text">插件在指定区块执行计算、读写和延迟压力。</p></article>
+                <article class="timeline-item"><div class="step-index">三</div><h3 class="step-title">观察状态</h3><p class="step-text">通过 /tpslag status 与 /tpslag pos 查看当前情况。</p></article>
+                <article class="timeline-item"><div class="step-index">四</div><h3 class="step-title">停止回滚</h3><p class="step-text">执行 /tpslag stop 或 /abot stop，清理并恢复现场。</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="info">
+            <h2 class="section-title">运行信息</h2>
+            <div class="info-list">
+                <article class="info-item"><h3 class="info-title">支持平台</h3><p class="info-text">面向纸端一点二十一点四环境。</p></article>
+                <article class="info-item"><h3 class="info-title">主命令</h3><p class="info-text">使用 /tpslag 管理限速，使用 /abot 管理机器人场景。</p></article>
+                <article class="info-item"><h3 class="info-title">权限节点</h3><p class="info-text">tpslag.control 控制压测，tpslag.abot 控制机器人模拟。</p></article>
+                <article class="info-item"><h3 class="info-title">使用提醒</h3><p class="info-text">请优先在测试服使用，并在压测前确认备份与监控。</p></article>
+            </div>
+        </section>
+
+        <p class="footer-note">压测完成后务必执行停止命令，并检查强制加载区块、机器人实体和状态输出是否已经清理。</p>
+    </main>
+</body>
+</html>

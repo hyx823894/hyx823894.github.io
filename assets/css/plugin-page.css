@@ -25,6 +25,7 @@ body.theme-magnet { --bg: #101722; --text: #f2f7ff; --muted: #b5c2d6; --accent: 
 body.theme-binder { --bg: #171021; --text: #fff8e6; --muted: #d7c7e8; --accent: #ffd166; --accent-2: #a06bff; --icon-fg: #211205; }
 body.theme-deathnote { --bg: #12070a; --text: #fff0f0; --muted: #d8aeb4; --accent: #ff4d6d; --accent-2: #050505; --icon-fg: #fff0f0; }
 body.theme-enchbook { --bg: #120d24; --text: #fff9e8; --muted: #d7c9ef; --accent: #ffd56a; --accent-2: #7be7ff; --icon-fg: #221305; }
+body.theme-fastbuilder { --bg: #201207; --text: #fff8e8; --muted: #dcc5a9; --accent: #ffb13b; --accent-2: #5cecff; --icon-fg: #211204; }
 body.theme-fish { --bg: #042433; --text: #f2fdff; --muted: #a8d2dd; --accent: #5cecff; --accent-2: #ffd98a; --icon-fg: #042433; }
 body.theme-nametag { --bg: #071221; --text: #f4f9ff; --muted: #b3c7dc; --accent: #69d8ff; --accent-2: #ffd36a; --icon-fg: #06101f; }
 body.theme-playroom { --bg: #091b31; --text: #f3fbff; --muted: #adc7de; --accent: #68b7ff; --accent-2: #73f0ff; --icon-fg: #061326; }
@@ -32,6 +33,7 @@ body.theme-prefix { --bg: #171026; --text: #fff8df; --muted: #d8c6f0; --accent: 
 body.theme-scare { --bg: #110816; --text: #fff3fb; --muted: #d4b5ce; --accent: #ff5c8a; --accent-2: #7c4dff; --icon-fg: #19070f; }
 body.theme-skilljob { --bg: #211409; --text: #fff5d6; --muted: #dcc9a9; --accent: #ffd166; --accent-2: #ff8d4a; --icon-fg: #241509; }
 body.theme-stopchat { --bg: #07192b; --text: #f4fbff; --muted: #b6cce2; --accent: #62c7ff; --accent-2: #7af0d6; --icon-fg: #06111e; }
+body.theme-tpslag { --bg: #110d2d; --text: #f8f6ff; --muted: #c8c1e8; --accent: #41f1ff; --accent-2: #ff5e7e; --icon-fg: #0b0d1c; }
 body.theme-worldclean { --bg: #071b12; --text: #f4fff6; --muted: #b9d8c1; --accent: #6ee787; --accent-2: #74f2d5; --icon-fg: #062016; }
 body.theme-xraylobby { --bg: #0a1830; --text: #f6fbff; --muted: #b7cbe0; --accent: #74c7ff; --accent-2: #ff9ee8; --icon-fg: #07142a; }
 body.theme-xraypit { --bg: #0b1020; --text: #f4fbff; --muted: #b8c2d4; --accent: #31e7ff; --accent-2: #ff5c7a; --icon-fg: #07101d; }
